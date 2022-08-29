@@ -21,4 +21,4 @@ Plataforma focada em incentivar, informar e ajudar pessoas dentro da comunidade 
 > - Arthur Padilha
 
 
-> Link do Jira: https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/1
+Link do Jira: https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/1

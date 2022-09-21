@@ -1,0 +1,14 @@
+{%extends 'gb/base.html'%}
+
+{%block title%}
+<a href="{%url 'gb:index'%}">Cadastro</a>
+{%endblock%}
+
+{%block content%}
+<form method="POST" action="">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Criar usuário">
+</form>
+<p>Já tem uma conta? <a href="{% url 'gb:login'%}">Faça login</a></p>
+{%endblock%}

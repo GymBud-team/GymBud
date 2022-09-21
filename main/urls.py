@@ -1,7 +1,11 @@
 from django.urls import path
 from . import views
 
-urlpatterns =[
+app_name = 'gb'
+urlpatterns = [
 
-    path('', views.home, name='home')
+    path('', views.index, name='index'),
+    path('login/', views.loginPage, name='login'),
+    path('register/', views.register, name='register'),
+    path('confirmed/',views.confirmed, name='confirmed'),
 ]

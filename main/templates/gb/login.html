@@ -1,0 +1,24 @@
+{% extends 'gb/base.html' %}
+
+{%block title%}
+<a href="{%url 'gb:index'%}"> Login </a>
+{%endblock%}
+
+{%block content%}
+<body>
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="input-user">
+                <input type="text" name="username" placeholder="username">
+            </div>
+            <div class="input-pass">
+                <input type="password" name="password" placeholder="password">
+            </div>
+            <div class="btn-login">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    <div>
+</body>
+{%endblock%}

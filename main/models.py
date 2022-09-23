@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Caracteristicas(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    idade = models.IntegerField(default=0)
+    peso_inicial = models.IntegerField(default=0)
+    altura =  models.FloatField(default=0)
+
 class Metas(models.Model):
 
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -21,5 +27,4 @@ class Metas(models.Model):
     (tres, '3 litros'),
     )
   
-
-    agua = models.IntegerField(default=0, choices=AGUA)
+    agua = models.FloatField(default=0, choices=AGUA)

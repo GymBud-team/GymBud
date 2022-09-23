@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Metas, Caracteristicas
+
+admin.site.register(Metas)
+admin.site.register(Caracteristicas)

@@ -1,0 +1,15 @@
+{%extends 'gb/base.html'%}
+
+{%block title%}
+<a href="{%url 'gb:confirmed'%}">Suas metas</a>
+<h1>{{request.user}}</h1>
+{%endblock%}
+
+{%block content %}
+
+<h2>Meta de peso: {{metas.peso}} kg</h2>
+<h2>Meta de calorias: {{metas.calorias}} calorias</h2>
+<h2>Meta de agua: {{metas.agua}} L</h2>
+<a href="{%url 'gb:metas_edit'%}">Editar suas metas</a>
+
+{%endblock%}

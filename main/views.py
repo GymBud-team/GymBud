@@ -55,7 +55,7 @@ def register(request):
     context = {'form':form}
     return render(request, 'gb/register.html', context)
 
-def caracteristicas(request):
+def define_caracteristicas(request):
     instance = Caracteristicas()
     
     form = CaracteristicasForm(request.POST or None, instance=instance)
@@ -64,12 +64,12 @@ def caracteristicas(request):
         obj.usuario = request.user # Add an author field which will contain current user's id
         obj.save()
 
-        return redirect('gb:metas')
+        return redirect('gb:define_metas')
     
     context = {'form': form}
-    return render(request,'gb/metas.html', context)
+    return render(request,'gb/caracteristicas.html', context)
 
-def metas(request):
+def define_metas(request):
     instance = Metas()
     
     form = MetasForm(request.POST or None, instance=instance)
@@ -81,9 +81,32 @@ def metas(request):
         return redirect('gb:confirmed')
     
     context = {'form': form}
-    return render(request,'gb/caracteristicas.html', context)
+    return render(request,'gb/define_metas.html', context)
+
+def metas(request):
+    
+    metas = Metas.objects.get(id = request.user.id)
+    context = {'metas': metas} 
+    return render(request, "gb/metas_info.html", context)
+
+def edit_metas(request):
+    instance = Metas.objects.get(id = request.user.id)
+    
+    form = MetasForm(request.POST or None, instance=instance)
+    if request.POST and form.is_valid():
+        obj = form.save(commit=False) # Return an object without saving to the DB
+        obj.usuario = request.user # Add an author field which will contain current user's id
+        obj.save()
+
+        return redirect('gb:metas_info')
+    
+    context = {'form': form}
+    return render(request,'gb/metas_edit.html', context)
 
 
 # confirm test
 def confirmed(request):
-    return render(request,'gb/confirmed.html')
+    metas = Metas()
+    pessoal = Metas.objects.get(id=request.user.id)
+    context = {'pessoal': pessoal}
+    return render(request,'gb/confirmed.html', context)

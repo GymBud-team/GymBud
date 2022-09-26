@@ -4,8 +4,10 @@ from django.contrib.auth.models import User
 class Caracteristicas(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     idade = models.IntegerField(default=0)
+    peso_inicial = models.FloatField(default=0)
     peso_atual = models.FloatField(default=0)
     altura =  models.FloatField(default=0)
+    inicio = models.DateField(auto_now_add=True)
 
 
 class Metas(models.Model):

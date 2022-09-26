@@ -12,6 +12,7 @@
 <br>
 <a href="{% url 'gb:peso_entry' %}">Entrada</a>
 <br>
+<p>{{caracteristicas.inicio}}: <strong>{{caracteristicas.peso_inicial}}</strong></p>
 {% for entrada in historico %}
 <p>{{entrada.created}}: <strong>{{entrada.peso}}</strong></p>
 {% endfor %}

@@ -62,6 +62,7 @@ def define_caracteristicas(request):
     if request.POST and form.is_valid():
         obj = form.save(commit=False) # Return an object without saving to the DB
         obj.usuario = request.user # Add an author field which will contain current user's id
+        obj.peso_inicial = obj.peso_atual
         obj.save()
 
         return redirect('gb:define_metas')

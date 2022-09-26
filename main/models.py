@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 class Caracteristicas(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     idade = models.IntegerField(default=0)
-    peso_inicial = models.IntegerField(default=0)
+    peso_atual = models.FloatField(default=0)
     altura =  models.FloatField(default=0)
+
 
 class Metas(models.Model):
 
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    peso = models.IntegerField(default=0)
+    peso = models.FloatField(default=0)
     calorias = models.IntegerField(default=0)
 
     um = 1
@@ -28,3 +29,8 @@ class Metas(models.Model):
     )
   
     agua = models.FloatField(default=0, choices=AGUA)
+
+class PesoHistory(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    peso = models.FloatField(default=0)
+    created = models.DateField(auto_now_add=True)

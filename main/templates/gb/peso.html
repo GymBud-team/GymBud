@@ -1,0 +1,18 @@
+{%extends 'gb/base.html'%}
+
+{%block title%}
+<a href="{%url 'gb:confirmed'%}">Seu peso</a>
+<h1>{{request.user}}</h1>
+{%endblock%}
+
+{%block content %}
+
+<h2>Peso Atual: {{caracteristicas.peso_atual}} kg</h2>
+<h2>Meta de peso: {{metas.peso}} kg</h2>
+<br>
+<a href="{% url 'gb:peso_entry' %}">Entrada</a>
+<br>
+{% for entrada in historico %}
+<p>{{entrada.created}}: <strong>{{entrada.peso}}</strong></p>
+{% endfor %}
+{%endblock%}

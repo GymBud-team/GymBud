@@ -1,0 +1,14 @@
+{%extends 'gb/base.html'%}
+
+{%block title%}
+<a href="{%url 'gb:confirmed'%}">Editar seu Peso</a>
+{%endblock%}
+
+{%block content%}
+<h1>{{request.user}}</h1>
+<form method="POST" action="">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Editar">
+</form>
+{%endblock%}

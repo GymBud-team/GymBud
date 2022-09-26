@@ -14,4 +14,6 @@ urlpatterns = [
     path('metas/', views.metas, name='metas_info'),
     path('metas/edit', views.edit_metas, name='metas_edit'),
     path('confirmed/',views.confirmed, name='confirmed'),
+    path('peso/',views.peso, name='peso'),
+    path('peso/entry',views.peso_entry, name='peso_entry'),
 ]

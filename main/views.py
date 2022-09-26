@@ -1,10 +1,10 @@
-# Imports
+#Imports
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import CreateFormUser, MetasForm, CaracteristicasForm
-from .models import Metas, Caracteristicas
+from .forms import CreateFormUser, MetasForm, CaracteristicasForm, PesoForm, PesoHistoryForm
+from .models import Metas, Caracteristicas, PesoHistory
 
 # Landing Page
 def index(request):
@@ -102,6 +102,37 @@ def edit_metas(request):
     
     context = {'form': form}
     return render(request,'gb/metas_edit.html', context)
+
+def peso(request):
+    metas = Metas.objects.get(id = request.user.id)
+    caracteristicas = Caracteristicas.objects.get(id = request.user.id)
+    historico = PesoHistory.objects.filter(usuario_id= request.user.id)
+    context = {"metas": metas, "caracteristicas": caracteristicas, 'historico': historico}
+    
+    return render(request, "gb/peso.html", context)
+
+def peso_entry(request):
+    instance = Caracteristicas.objects.get(id = request.user.id)
+
+    form_history = PesoHistoryForm(request.POST or None)
+    form = PesoForm(request.POST or None, instance=instance)
+    if request.POST and form.is_valid() and form_history.is_valid():
+        obj = form.save(commit=False) # Return an object without saving to the DB
+        obj.usuario = request.user # Add an author field which will contain current user's id
+        obj.altura = instance.altura
+        obj.idade = instance.idade
+
+        obj_history = form_history.save(commit=False) # Return an object without saving to the DB
+        obj_history.usuario = request.user
+        obj_history.peso = form.cleaned_data['peso_atual']
+
+        obj_history.save()
+        obj.save()
+
+        return redirect('gb:peso')
+    
+    context = {'form': form}
+    return render(request,'gb/peso_entry.html', context)
 
 
 # confirm test

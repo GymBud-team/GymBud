@@ -14,6 +14,13 @@
 </form>
 <div>
     <p>Seu consumo até agora: {{consumo}} ml </p>
+    {%if bateu_meta %}
+    <p>Você bateu sua meta diária.</p>
+    {%if falta != 0%}
+        <p>{{falta}}ml ultrapassados da meta.</p>
+    {%endif%}
+    {%else%}
     <p>Faltam {{falta}} ml pra sua meta diária.</p>
+    {%endif%}
 </div>
 {%endblock%}

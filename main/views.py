@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import *
-
+from datetime import date, timedelta
 
 # Landing Page
 def index(request):
@@ -146,13 +146,18 @@ def water_count(request):
     form = IngestaoForm()
     instance = Ingestao.objects.get(id = request.user.id)
     metas = Metas.objects.get(id = request.user.id)
-    keep = instance.agua
-    consumo = keep
+
+    agua_atual_db = instance.agua
+    consumo = agua_atual_db
+
+    bateu_meta = False
     falta = (metas.agua *1000) - consumo
+    if falta<=0:
+        bateu_meta=True
     if request.method == 'POST':
         form = IngestaoForm(request.POST or None, instance=instance)
         if form.is_valid():
-            consumo = form.cleaned_data['agua'] + keep
+            consumo = form.cleaned_data['agua'] + agua_atual_db
             falta = (metas.agua *1000) - consumo
             obj = form.save(commit=False)
             obj.agua = consumo
@@ -161,7 +166,9 @@ def water_count(request):
             
 
         return redirect('gb:agua')
-    context = {'form':form, 'consumo':consumo, 'falta':falta}
+    if bateu_meta:
+        falta = falta*(-1)
+    context = {'form':form, 'consumo':consumo, 'falta':falta,'bateu_meta':bateu_meta}
     return render(request, 'gb/agua.html',context)
 
 # confirm test

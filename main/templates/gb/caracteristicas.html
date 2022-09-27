@@ -1,7 +1,7 @@
 {%extends 'gb/base.html'%}
 
 {%block title%}
-<a href="{%url 'gb:index'%}">Caracteristicas pessoais</a>
+<p>Caracteristicas pessoais</p>
 {%endblock%}
 
 {%block content%}
@@ -11,6 +11,4 @@
     {{form.as_p}}
     <input type="submit" value="Definir metas ->">
 </form>
-
-<p>Já tem uma conta? <a href="{% url 'gb:login'%}">Faça login</a></p>
 {%endblock%}

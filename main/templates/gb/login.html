@@ -1,10 +1,11 @@
 {% extends 'gb/base.html' %}
 
 {%block title%}
-<a href="{%url 'gb:index'%}"> Login </a>
+<p><a href="{%url 'gb:index'%}">GymBud</a> Login</p>
 {%endblock%}
 
 {%block content%}
+
 <body>
     <div>
         <form method="POST" action="">
@@ -19,6 +20,6 @@
                 <input type="submit" value="Login">
             </div>
         </form>
-    <div>
+        <div>
 </body>
 {%endblock%}

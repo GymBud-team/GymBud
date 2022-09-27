@@ -145,12 +145,15 @@ def peso_entry(request):
 def water_count(request):
     form = IngestaoForm()
     instance = Ingestao.objects.get(id = request.user.id)
+    metas = Metas.objects.get(id = request.user.id)
     keep = instance.agua
     consumo = keep
+    falta = (metas.agua *1000) - consumo
     if request.method == 'POST':
         form = IngestaoForm(request.POST or None, instance=instance)
         if form.is_valid():
             consumo = form.cleaned_data['agua'] + keep
+            falta = (metas.agua *1000) - consumo
             obj = form.save(commit=False)
             obj.agua = consumo
             obj.usuario = request.user
@@ -158,12 +161,14 @@ def water_count(request):
             
 
         return redirect('gb:agua')
-    context = {'form':form, 'consumo':consumo}
+    context = {'form':form, 'consumo':consumo, 'falta':falta}
     return render(request, 'gb/agua.html',context)
 
 # confirm test
 def confirmed(request):
-    metas = Metas()
-    pessoal = Metas.objects.get(id=request.user.id)
-    context = {'pessoal': pessoal}
+    metas = Metas.objects.get(id = request.user.id)
+    caracteristicas = Caracteristicas.objects.get(id = request.user.id)
+    ingestao = Ingestao.objects.get(id = request.user.id)
+
+    context = {"metas": metas, "caracteristicas": caracteristicas, 'ingestao':ingestao}
     return render(request,'gb/confirmed.html', context)

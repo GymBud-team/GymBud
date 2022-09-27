@@ -1,7 +1,8 @@
 {%extends 'gb/base.html'%}
 
 {%block title%}
-<a href="{%url 'gb:index'%}">Ingestão de Água</a>
+<p><a href="{%url 'gb:confirmed'%}">GymBud</a> Ingestão de água</p>
+<h1>{{request.user}}</h1>
 {%endblock%}
 
 {%block content%}
@@ -12,6 +13,7 @@
     <input type="submit" value="Adicionar">
 </form>
 <div>
-    <p>Seu consumo até agora: {{consumo}}</p>
+    <p>Seu consumo até agora: {{consumo}} ml </p>
+    <p>Faltam {{falta}} ml pra sua meta diária.</p>
 </div>
 {%endblock%}

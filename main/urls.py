@@ -8,7 +8,7 @@ urlpatterns = [
     path('login/', views.loginPage, name='login'),
     path('register/', views.register, name='register'),
     path('logout/', views.logoutUser, name="logout"),
-
+    path('agua/',views.water_count, name="agua"),
     path('caracteristicasform/', views.define_caracteristicas, name='caracteristicas'),
     path('metasform/', views.define_metas, name='define_metas'),
     path('metas/', views.metas, name='metas_info'),

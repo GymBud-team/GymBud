@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import Metas, Caracteristicas, PesoHistory
+from .models import *
 
 class CreateFormUser(UserCreationForm):
     class Meta:
@@ -27,3 +27,8 @@ class PesoHistoryForm(ModelForm):
     class Meta:
         model = PesoHistory
         fields = []
+
+class IngestaoForm(ModelForm):
+    class Meta:
+        model = Ingestao
+        fields = ['agua']

@@ -36,3 +36,7 @@ class PesoHistory(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     peso = models.FloatField(default=0)
     created = models.DateField(auto_now_add=True)
+
+class Ingestao(models.Model):
+    agua = models.IntegerField(default=0)
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

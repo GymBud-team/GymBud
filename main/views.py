@@ -1,10 +1,12 @@
 #Imports
+# Imports
+import sqlite3
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import CreateFormUser, MetasForm, CaracteristicasForm, PesoForm, PesoHistoryForm
-from .models import Metas, Caracteristicas, PesoHistory
+from .forms import *
+
 
 # Landing Page
 def index(request):
@@ -59,12 +61,17 @@ def define_caracteristicas(request):
     instance = Caracteristicas()
     
     form = CaracteristicasForm(request.POST or None, instance=instance)
+    form_agua = IngestaoForm()
     if request.POST and form.is_valid():
         obj = form.save(commit=False) # Return an object without saving to the DB
         obj.usuario = request.user # Add an author field which will contain current user's id
         obj.peso_inicial = obj.peso_atual
         obj.save()
 
+        obj_agua = form_agua.save(commit=False)
+        obj_agua.usuario = request.user
+        obj_agua.agua = 0
+        obj_agua.save()
         return redirect('gb:define_metas')
     
     context = {'form': form}
@@ -135,6 +142,24 @@ def peso_entry(request):
     context = {'form': form}
     return render(request,'gb/peso_entry.html', context)
 
+def water_count(request):
+    form = IngestaoForm()
+    instance = Ingestao.objects.get(id = request.user.id)
+    keep = instance.agua
+    consumo = keep
+    if request.method == 'POST':
+        form = IngestaoForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            consumo = form.cleaned_data['agua'] + keep
+            obj = form.save(commit=False)
+            obj.agua = consumo
+            obj.usuario = request.user
+            obj.save()
+            
+
+        return redirect('gb:agua')
+    context = {'form':form, 'consumo':consumo}
+    return render(request, 'gb/agua.html',context)
 
 # confirm test
 def confirmed(request):

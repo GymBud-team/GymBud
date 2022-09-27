@@ -1,8 +1,10 @@
-{%extends 'gb/base.html'%}
+{%extends 'gb/base.html'%}  
 
-{%block title%}
-<a href="{%url 'gb:index'%}">Confirmado</a>
+{%block content%}
 <h1>{{request.user}}</h1>
 <a href="{% url 'gb:metas_info' %}">Suas metas</a>
+<br>
 <a href="{% url 'gb:peso' %}">Seu peso</a>
+<br>
+<a href="{%url 'gb:agua'%}">Ingestão de Água</a>
 {%endblock%}

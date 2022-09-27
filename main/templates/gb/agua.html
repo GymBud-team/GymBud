@@ -1,0 +1,17 @@
+{%extends 'gb/base.html'%}
+
+{%block title%}
+<a href="{%url 'gb:index'%}">Ingestão de Água</a>
+{%endblock%}
+
+{%block content%}
+<h2>Quantidade ingerida em ml:</h2>
+<form method="POST" action="">
+    {%csrf_token%}
+    {{form}}
+    <input type="submit" value="Adicionar">
+</form>
+<div>
+    <p>Seu consumo até agora: {{consumo}}</p>
+</div>
+{%endblock%}

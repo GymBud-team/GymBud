@@ -1,1 +1,1 @@
-web gunicorn gymbud.wsgi:application --log-file -
+web gunicorn GymBud.wsgi:application --log-file -

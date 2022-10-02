@@ -163,6 +163,7 @@ def water_count(request):
     falta = (metas.agua *1000) - consumo
     if falta<=0:
         bateu_meta=True
+        falta = falta * (-1)
     if request.method == 'POST':
         form = IngestaoForm(request.POST or None, instance=instance)
         if form.is_valid():

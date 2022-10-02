@@ -147,7 +147,7 @@ def water_count(request):
     instance = Ingestao.objects.get(id = request.user.id)
     instance_last_date = Ingestao.objects.latest('created')
     metas = Metas.objects.get(id = request.user.id)
-
+    bateu_meta = False
     if(instance_last_date.get_day > instance.get_day):
         consumo = 0
     else:
@@ -175,7 +175,7 @@ def water_count(request):
             
 
         return redirect('gb:agua')
-    context = {'form':form, 'consumo':consumo, 'falta':falta, 'dia':dia, 'mes':mes, 'um_dig':um_dig}
+    context = {'form':form, 'consumo':consumo, 'falta':falta, 'dia':dia, 'mes':mes, 'um_dig':um_dig, 'bateu_meta':bateu_meta}
     return render(request, 'gb/agua.html',context)
 
 # confirm test

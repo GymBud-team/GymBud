@@ -9,6 +9,7 @@
 <form method="POST" action="">
     {%csrf_token%}
     {{form.as_p}}
+    <p>obs.:Altura em metros</p>
     <input type="submit" value="Definir metas ->">
 </form>
 {%endblock%}

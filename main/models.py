@@ -40,3 +40,13 @@ class PesoHistory(models.Model):
 class Ingestao(models.Model):
     agua = models.IntegerField(default=0)
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created = models.DateField(auto_now_add=True)
+
+    @property
+    def get_day(self):
+        return self.created.day
+    
+    def get_month(self):
+        return self.created.month
+
+    

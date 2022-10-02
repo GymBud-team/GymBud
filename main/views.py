@@ -145,9 +145,21 @@ def peso_entry(request):
 def water_count(request):
     form = IngestaoForm()
     instance = Ingestao.objects.get(id = request.user.id)
+    instance_last_date = Ingestao.objects.latest('created')
     metas = Metas.objects.get(id = request.user.id)
-    keep = instance.agua
-    consumo = keep
+
+    if(instance_last_date.get_day > instance.get_day):
+        consumo = 0
+    else:
+        keep = instance.agua
+        consumo = keep
+
+    dia = instance.get_day
+    mes = instance.get_month
+    
+    if len(str(dia)) == 1:
+        um_dig = True 
+
     falta = (metas.agua *1000) - consumo
     if request.method == 'POST':
         form = IngestaoForm(request.POST or None, instance=instance)
@@ -161,7 +173,7 @@ def water_count(request):
             
 
         return redirect('gb:agua')
-    context = {'form':form, 'consumo':consumo, 'falta':falta}
+    context = {'form':form, 'consumo':consumo, 'falta':falta, 'dia':dia, 'mes':mes, 'um_dig':um_dig}
     return render(request, 'gb/agua.html',context)
 
 # confirm test

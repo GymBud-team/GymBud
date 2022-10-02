@@ -6,14 +6,18 @@
 {%endblock%}
 
 {%block content%}
-<h2>Quantidade ingerida em ml:</h2>
+{% if um_dig == True %}
+<h2>Dia 0{{dia}}/{{mes}} - Quantidade ingerida em ml</h2>
+{% else %}
+<h2>Dia {{dia}}/{{mes}} - Quantidade ingerida em ml</h2>
+{% endif %}
 <form method="POST" action="">
     {%csrf_token%}
     {{form}}
     <input type="submit" value="Adicionar">
 </form>
 <div>
-    <p>Seu consumo até agora: {{consumo}} ml </p>
-    <p>Faltam {{falta}} ml pra sua meta diária.</p>
+    <p>Seu consumo até agora: <strong>{{consumo}} ml</strong> </p>
+    <p>Faltam <strong>{{falta}} ml</strong> pra sua meta diária.</p>
 </div>
 {%endblock%}

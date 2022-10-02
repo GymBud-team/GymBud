@@ -166,7 +166,7 @@ def water_count(request):
     if request.method == 'POST':
         form = IngestaoForm(request.POST or None, instance=instance)
         if form.is_valid():
-            consumo = form.cleaned_data['agua'] + agua_atual_db
+            consumo = form.cleaned_data['agua'] + keep
             falta = (metas.agua *1000) - consumo
             obj = form.save(commit=False)
             obj.agua = consumo

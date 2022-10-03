@@ -10,7 +10,11 @@
 <h2>Peso Atual: {{caracteristicas.peso_atual}} kg</h2>
 <h2>Meta de peso: {{metas.peso}} kg</h2>
 <br>
-<a href="{% url 'gb:peso_entry' %}">Entrada</a>
+<form method="POST" action="">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Editar">
+</form>
 <br>
 <p>{{caracteristicas.inicio}}: <strong>{{caracteristicas.peso_inicial}}</strong></p>
 {% for entrada in historico %}

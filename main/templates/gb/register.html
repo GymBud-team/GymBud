@@ -1,7 +1,7 @@
 {%extends 'gb/base.html'%}
 
 {%block title%}
-<a href="{%url 'gb:index'%}"> Cadastro</a>
+<p> Cadastro</p>
 {%endblock%}
 
 {%block content%}
@@ -11,4 +11,14 @@
     <input type="submit" value="Caracteristicas físicas ->">
 </form>
 <p>Já tem uma conta? <a href="{% url 'gb:login'%}">Faça login</a></p>
+
+<script>
+
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+
+</script>
+
 {%endblock%}

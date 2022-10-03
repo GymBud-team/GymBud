@@ -12,4 +12,13 @@
     <p>obs.:Altura em metros</p>
     <input type="submit" value="Definir metas ->">
 </form>
+
+<script>
+
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+
+</script>
 {%endblock%}

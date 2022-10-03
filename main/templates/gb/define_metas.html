@@ -11,4 +11,13 @@
     {{form.as_p}}
     <input type="submit" value="Criar conta">
 </form>
+
+<script>
+
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+
+</script>
 {%endblock%}

@@ -115,20 +115,14 @@ def peso(request):
     metas = Metas.objects.get(id = request.user.id)
     caracteristicas = Caracteristicas.objects.get(id = request.user.id)
     historico = PesoHistory.objects.filter(usuario_id= request.user.id)
-    context = {"metas": metas, "caracteristicas": caracteristicas, 'historico': historico}
     
-    return render(request, "gb/peso.html", context)
-
-def peso_entry(request):
-    instance = Caracteristicas.objects.get(id = request.user.id)
-
     form_history = PesoHistoryForm(request.POST or None)
-    form = PesoForm(request.POST or None, instance=instance)
+    form = PesoForm(request.POST or None, instance=caracteristicas)
     if request.POST and form.is_valid() and form_history.is_valid():
         obj = form.save(commit=False) # Return an object without saving to the DB
         obj.usuario = request.user # Add an author field which will contain current user's id
-        obj.altura = instance.altura
-        obj.idade = instance.idade
+        obj.altura = caracteristicas.altura
+        obj.idade = caracteristicas.idade
 
         obj_history = form_history.save(commit=False) # Return an object without saving to the DB
         obj_history.usuario = request.user
@@ -138,8 +132,14 @@ def peso_entry(request):
         obj.save()
 
         return redirect('gb:peso')
-    
-    context = {'form': form}
+
+    context = {"metas": metas, "caracteristicas": caracteristicas, 'historico': historico, 'form': form}    
+    return render(request, "gb/peso.html", context)
+
+def peso_entry(request):
+    instance = Caracteristicas.objects.get(id = request.user.id)
+
+    context = {}
     return render(request,'gb/peso_entry.html', context)
 
 def water_count(request):

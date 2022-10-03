@@ -33,26 +33,31 @@ def logoutUser(request):
     return redirect('gb:index')
 
 def register(request):
+    instance = User()
+
     if request.user.is_authenticated:
-        return redirect('gb:confirmed')
+        instance = User.objects.get(id = request.user.id)
 
-    else:
-        form = CreateFormUser()
-        if request.method == 'POST':
-            form = CreateFormUser(request.POST)
-            if form.is_valid():
-                form.save()
-
-                '''user = form.cleaned_data.get('username')
-                messages.success(request, 'A conta foi criada para ' + user'''
-
-                user = authenticate(username=form.cleaned_data['username'],
-                password = form.cleaned_data['password1']
-                ) 
+    form = CreateFormUser(request.POST, instance=instance)
+    if request.method == 'POST':
+        #if preencheu == False:
         
-                login(request, user)
-                return redirect('gb:caracteristicas')
-        #return redirect('gb:metas')
+        #else:
+            #form = CreateFormUser(request.POST, instance=User.objects.get(id = request.user.id))
+        if form.is_valid():
+
+            form.save()
+
+            '''user = form.cleaned_data.get('username')
+            messages.success(request, 'A conta foi criada para ' + user'''
+
+            user = authenticate(username=form.cleaned_data['username'],
+            password = form.cleaned_data['password1']
+            ) 
+    
+            login(request, user)
+            return redirect('gb:caracteristicas')
+            #return redirect('gb:metas')
             
     context = {'form':form}
     return render(request, 'gb/register.html', context)
@@ -187,3 +192,8 @@ def confirmed(request):
 
     context = {"metas": metas, "caracteristicas": caracteristicas, 'ingestao':ingestao}
     return render(request,'gb/confirmed.html', context)
+
+
+def csrf_failure(request, reason=""):
+    context = {'message': 'some custom messages'}
+    return render('gb/errocsrf.html' , context)

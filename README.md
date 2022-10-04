@@ -18,11 +18,12 @@ Link do Jira: https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/
 Link do Diagrama de Classes: https://lucid.app/lucidchart/d0280daf-2fa3-41c8-9005-35793c56706e/edit?page=0_0#
 Link do Protótipo Lo-Fi: https://www.figma.com/file/9cpLvcqoB6CJjRUXmC9CrT/Lo-Fi-GymBud?node-id=0%3A1
 
- <div>
-  
-  <a href="https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/1" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" /> target="_blank"></a> <img width="42%" src="link"> 
-
+ <div> 
+  <a href="https://www.figma.com/file/9cpLvcqoB6CJjRUXmC9CrT/Lo-Fi-GymBud?node-id=0%3A1" target="_blank"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" target="_blank"></a>
+  <a href="https://instagram.com/rafaballerini" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
  	<a href="https://www.twitch.tv/rafaballerinii" target="_blank"><img src="https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white" target="_blank"></a>
+ <a href="https://discord.gg/wagxzStdcR" target="_blank"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" target="_blank"></a> 
+  <a href = "mailto:contatorafaballerini@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+  
  
- </div>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" />
+</div>

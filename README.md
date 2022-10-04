@@ -20,8 +20,7 @@ Link do Diagrama de Classes: https://lucid.app/lucidchart/d0280daf-2fa3-41c8-900
  <div> 
   <a href="https://www.figma.com/file/9cpLvcqoB6CJjRUXmC9CrT/Lo-Fi-GymBud?node-id=0%3A1" target="_blank"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" target="_blank"></a>
   <a href="https://app-gymbud.herokuapp.com/" target="_blank"><img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" target="_blank"></a>
- 	<a href="https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/1" target="_blank"><img src="![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white)" target="_blank"></a>
+ <a href="https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/1" target="_blank"><img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white" target="_blank"></a> 
  <a href="https://discord.gg/wagxzStdcR" target="_blank"><img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" target="_blank"></a> 
-
  
 </div>

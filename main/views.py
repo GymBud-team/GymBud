@@ -10,21 +10,19 @@ from datetime import date, timedelta
 
 # Landing Page
 def index(request):
+    if request.user.is_authenticated:
+        return redirect('gb:confirmed')
     return render(request, 'gb/index.html')
 
 def loginPage(request):
-    if request.user.is_authenticated:
-        return redirect('gb:register')
-        
-    else:
-        if(request.method == 'POST'):
+    if(request.method == 'POST'):
 
-            user = authenticate(username=request.POST['username'], password = request.POST['password'])
-            if user is not None:
-                login(request,user)
-                return redirect('gb:confirmed')
-            else:
-                messages.info(request, "Usuário ou senha incorretos.")
+        user = authenticate(username=request.POST['username'], password = request.POST['password'])
+        if user is not None:
+            login(request,user)
+            return redirect('gb:confirmed')
+        else:
+            messages.info(request, "Usuário ou senha incorretos.")
 
     return render(request,'gb/login.html')
 

@@ -20,7 +20,7 @@ Link do Protótipo Lo-Fi: https://www.figma.com/file/9cpLvcqoB6CJjRUXmC9CrT/Lo-F
 
  <div>
   
-  <a href="https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/1" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" /> target="_blank"></a>
+  <a href="https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/1" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" /> target="_blank"></a> <img width="42%" src="link"> 
 
  	<a href="https://www.twitch.tv/rafaballerinii" target="_blank"><img src="https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white" target="_blank"></a>
  

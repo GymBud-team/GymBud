@@ -12,10 +12,10 @@ O ***__GymBud__*** é uma plataforma que busca ajudar pessoas da comunidade ***F
 > - Arthur Padilha
 > - Alycia Lima
 
-### Stack 
+### Stack do projeto
 
 <div style="display: inline_block"><br>
-  <img align="right" alt="gymbud-Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
+  <img align="center" alt="gymbud-Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
   <img align="center" alt="gymbud-Django" height="30" width="40" src="https://icongr.am/devicon/django-original.svg?size=128&color=currentColor">
 
 

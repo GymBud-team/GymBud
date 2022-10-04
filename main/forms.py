@@ -12,11 +12,21 @@ class MetasForm(ModelForm):
     class Meta:
         model = Metas
         fields = ['peso', 'calorias', 'agua']
+        labels = {
+            'agua': "Meta de ingestão diária de água:",
+            'calorias':"Meta de consumo calórico diário:",
+            'peso':"Meta de peso:"
+        }
+        
 
 class CaracteristicasForm(ModelForm):
     class Meta:
         model = Caracteristicas
         fields = ['idade', 'peso_atual', 'altura']
+
+        labels = {
+            'peso_atual':"Peso atual:"
+        }
     
 class PesoForm(ModelForm):
     class Meta:
@@ -32,3 +42,4 @@ class IngestaoForm(ModelForm):
     class Meta:
         model = Ingestao
         fields = ['agua']
+    

@@ -14,7 +14,7 @@ def index(request):
 
 def loginPage(request):
     if request.user.is_authenticated:
-        return redirect('gb:confirmed')
+        return redirect('gb:register')
         
     else:
         if(request.method == 'POST'):
@@ -86,6 +86,7 @@ def define_metas(request):
     instance = Metas()
     
     form = MetasForm(request.POST or None, instance=instance)
+    
     if request.POST and form.is_valid():
         obj = form.save(commit=False) # Return an object without saving to the DB
         obj.usuario = request.user # Add an author field which will contain current user's id
@@ -186,6 +187,9 @@ def water_count(request):
 
 # confirm test
 def confirmed(request):
+    if not request.user.is_authenticated:
+        return redirect('gb:register')
+    
     metas = Metas.objects.get(id = request.user.id)
     caracteristicas = Caracteristicas.objects.get(id = request.user.id)
     ingestao = Ingestao.objects.get(id = request.user.id)

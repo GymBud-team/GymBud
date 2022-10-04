@@ -21,6 +21,10 @@ class Metas(models.Model):
     dois = 2
     dois_meio = 2.5
     tres = 3
+    tres_meio = 3.5
+    quatro = 4
+    quatro_meio = 4.5
+    cinco = 5
 
     AGUA = (
     (um, '1 litro'),
@@ -28,6 +32,10 @@ class Metas(models.Model):
     (dois, '2 litros'),
     (dois_meio, '2.5 litros'),
     (tres, '3 litros'),
+    (tres_meio, '3.5 litros'),
+    (quatro, '4 litros'),
+    (quatro_meio, '4.5 litros'),
+    (cinco,'5 litros'),
     )
   
     agua = models.FloatField(default=None, choices=AGUA)

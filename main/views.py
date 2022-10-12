@@ -161,6 +161,8 @@ def water_count(request):
     dia = instance.get_day
     mes = instance.get_month
     
+    um_dig = False
+
     if len(str(dia)) == 1:
         um_dig = True 
 

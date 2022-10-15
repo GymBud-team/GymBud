@@ -8,12 +8,11 @@ from .forms import *
 from datetime import date, timedelta
 
 # Landing Page
-def index(request, pk):
-    usuario = User.objects.get(pk=pk)
+def index(request):
     if request.user.is_authenticated:
-        return redirect('gb:confirmed', pk)
-    context = {'usuario':usuario}
-    return render(request, 'gb/index.html', context)
+        usuario = User.objects.get(pk=request.user.pk)
+        return redirect('gb:confirmed', usuario.pk)
+    return render(request, 'gb/index.html')
 
 def loginPage(request):
     if(request.method == 'POST'):

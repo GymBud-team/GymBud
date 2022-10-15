@@ -20,7 +20,8 @@ def loginPage(request):
         user = authenticate(username=request.POST['username'], password = request.POST['password'])
         if user is not None:
             login(request,user)
-            return redirect('gb:confirmed')
+            usuario = User.objects.get(pk=request.user.pk)
+            return redirect('gb:confirmed', usuario.pk)
         else:
             messages.info(request, "Usuário ou senha incorretos.")
 
@@ -40,7 +41,7 @@ def register(request):
         #if preencheu == False:
         
         #else:
-            #form = CreateFormUser(request.POST, instance=User.objects.get(id = request.user.id))
+            #form = CreateFormUser(request.POST, instance=User.objects.get(pk=usuario.pk))
         if form.is_valid():
 
             form.save()
@@ -64,17 +65,23 @@ def define_caracteristicas(request,pk):
     instance = Caracteristicas()
     usuario = User.objects.get(pk=pk)
     form = CaracteristicasForm(request.POST or None, instance=instance)
-    form_agua = IngestaoForm()
+    form_agua = IngestaoAguaForm()
+    form_calorias = IngestaoCaloriasForm()
     if request.POST and form.is_valid():
         obj = form.save(commit=False) 
-        obj.usuario = request.user 
+        obj.usuario = usuario
         obj.peso_inicial = obj.peso_atual
         obj.save()
 
         obj_agua = form_agua.save(commit=False)
-        obj_agua.usuario = request.user
+        obj_agua.usuario = usuario
         obj_agua.agua = 0
         obj_agua.save()
+
+        obj_calorias = form_calorias.save(commit=False)
+        obj_calorias.usuario = usuario
+        obj_calorias.calorias = 0
+        obj_calorias.save()
         return redirect('gb:define_metas', usuario.pk)
     
     context = {'usuario':usuario, 'form': form}
@@ -87,7 +94,7 @@ def define_metas(request, pk):
     
     if request.POST and form.is_valid():
         obj = form.save(commit=False)
-        obj.usuario = request.user
+        obj.usuario = usuario
         obj.save()
 
         return redirect('gb:confirmed', usuario.pk)
@@ -97,7 +104,6 @@ def define_metas(request, pk):
 
 def metas(request, pk):
     usuario = User.objects.get(pk=pk)
-    print("pk: ",usuario.pk)
     metas = Metas.objects.get(pk = usuario.pk)
     context = {'usuario': usuario, 'metas': metas} 
     return render(request, "gb/metas_info.html", context)
@@ -109,7 +115,7 @@ def edit_metas(request, pk):
     form = MetasForm(request.POST or None, instance=instance)
     if request.POST and form.is_valid():
         obj = form.save(commit=False) 
-        obj.usuario = request.user
+        obj.usuario = usuario
         obj.save()
 
         return redirect('gb:metas_info', usuario.pk)
@@ -152,10 +158,10 @@ def peso_entry(request, pk):
 
 def water_count(request, pk):
     usuario = User.objects.get(pk=pk)
-    form = IngestaoForm()
-    instance = Ingestao.objects.get(id = request.user.id)
-    instance_last_date = Ingestao.objects.latest('created')
-    metas = Metas.objects.get(id = request.user.id)
+    form = IngestaoAguaForm()
+    instance = IngestaoAgua.objects.get(pk=usuario.pk)
+    instance_last_date = IngestaoAgua.objects.latest('created')
+    metas = Metas.objects.get(pk=usuario.pk)
     bateu_meta = False
     if(instance_last_date.get_day > instance.get_day):
         consumo = 0
@@ -176,13 +182,13 @@ def water_count(request, pk):
         bateu_meta=True
         falta = falta * (-1)
     if request.method == 'POST':
-        form = IngestaoForm(request.POST or None, instance=instance)
+        form = IngestaoAguaForm(request.POST or None, instance=instance)
         if form.is_valid():
             consumo = form.cleaned_data['agua'] + keep
             falta = (metas.agua *1000) - consumo
             obj = form.save(commit=False)
             obj.agua = consumo
-            obj.usuario = request.user
+            obj.usuario = usuario
             obj.save()
             
         
@@ -190,8 +196,46 @@ def water_count(request, pk):
     context = {'usuario':usuario, 'form':form, 'consumo':consumo, 'falta':falta, 'dia':dia, 'mes':mes, 'um_dig':um_dig, 'bateu_meta':bateu_meta}
     return render(request, 'gb/agua.html',context)
 
-def calorie_count(request):
-    pass
+def calorie_count(request, pk):
+    usuario = User.objects.get(pk=pk)
+    form = IngestaoCaloriasForm()
+    instance = IngestaoCalorias.objects.get(pk=usuario.pk)
+    instance_last_date = IngestaoCalorias.objects.latest('created')
+    metas = Metas.objects.get(pk=usuario.pk)
+    bateu_meta = False
+    if(instance_last_date.get_day > instance.get_day):
+        consumo = 0
+    else:
+        keep = instance.calorias
+        consumo = keep
+
+    dia = instance.get_day
+    mes = instance.get_month
+    
+    um_dig = False
+
+    if len(str(dia)) == 1:
+        um_dig = True 
+
+    falta = metas.calorias - consumo
+    if falta<=0:
+        bateu_meta=True
+        falta = falta * (-1)
+    if request.method == 'POST':
+        form = IngestaoCaloriasForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            consumo = form.cleaned_data['calorias'] + keep
+            falta = metas.calorias - consumo
+            obj = form.save(commit=False)
+            obj.calorias = consumo
+            obj.usuario = usuario
+            obj.save()
+            
+        
+        return redirect('gb:calorias', usuario.pk)
+    context = {'usuario':usuario, 'form':form, 'consumo':consumo, 'falta':falta, 'dia':dia, 'mes':mes, 'um_dig':um_dig, 'bateu_meta':bateu_meta}
+    return render(request, 'gb/calorias.html',context)
+
 # confirm test
 def confirmed(request, pk=None):
     if pk:
@@ -199,13 +243,13 @@ def confirmed(request, pk=None):
     else:
         usuario = User.objects.get(pk=request.user.pk)
     if not request.user.is_authenticated:
-        return redirect('gb:register')
+        return redirect('gb:register', usuario.pk)
     
-    print("pk: ",usuario.pk)
-    metas = Metas.objects.get(id = request.user.id)
-    caracteristicas = Caracteristicas.objects.get(id = request.user.id)
-    ingestao = Ingestao.objects.get(id = request.user.id)
-    context = {'usuario':usuario, "metas": metas, "caracteristicas": caracteristicas, 'ingestao':ingestao}
+    metas = Metas.objects.get(pk=usuario.pk)
+    caracteristicas = Caracteristicas.objects.get(pk=usuario.pk)
+    ingestao_agua = IngestaoAgua.objects.get(pk=usuario.pk)
+    ingestao_calorias = IngestaoCalorias.objects.get(pk=usuario.pk)
+    context = {'usuario':usuario, "metas": metas, "caracteristicas": caracteristicas, 'ingestao_agua':ingestao_agua, 'ingestao_calorias':ingestao_calorias}
     return render(request,'gb/confirmed.html', context)
 
 

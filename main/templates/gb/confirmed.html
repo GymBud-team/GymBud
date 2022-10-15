@@ -9,8 +9,10 @@
 <h4><a href="{% url 'gb:metas_info' usuario.pk %}">Suas metas</a></h4>
 <h4><a href="{% url 'gb:peso' usuario.pk %}">Seu peso</a></h4>
 <h4><a href="{% url 'gb:agua' usuario.pk %}">Ingestão de água</a></h4>
+<h4><a href="{% url 'gb:calorias' usuario.pk %}">Ingestão de calorias</a></h4>
 <h4><a href="{%url 'gb:logout'%}">Logout</a></h4>
 <br>
 <span><strong>Peso atual:</strong> {{caracteristicas.peso_atual}} ------------------ </span>
-<span><strong>Qtnd água do dia:</strong> {{ingestao.agua}} mL ------------------ </span>
+<span><strong>Qtnd água do dia:</strong> {{ingestao_agua.agua}} mL ------------------ </span>
+<span><strong>Qtnd calorias do dia:</strong> {{ingestao_calorias.calorias}} kcal ------------------ </span>
 {% endblock content %}

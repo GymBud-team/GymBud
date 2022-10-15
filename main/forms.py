@@ -38,8 +38,12 @@ class PesoHistoryForm(ModelForm):
         model = PesoHistory
         fields = []
 
-class IngestaoForm(ModelForm):
+class IngestaoAguaForm(ModelForm):
     class Meta:
-        model = Ingestao
+        model = IngestaoAgua
         fields = ['agua']
     
+class IngestaoCaloriasForm(ModelForm):
+    class Meta:
+        model = IngestaoCalorias
+        fields = ['calorias']

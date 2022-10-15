@@ -45,7 +45,7 @@ class PesoHistory(models.Model):
     peso = models.FloatField(default=None)
     created = models.DateField(auto_now_add=True)
 
-class Ingestao(models.Model):
+class IngestaoAgua(models.Model):
     agua = models.PositiveIntegerField(default=None)
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created = models.DateField(auto_now_add=True)
@@ -57,4 +57,15 @@ class Ingestao(models.Model):
     def get_month(self):
         return self.created.month
 
+class IngestaoCalorias(models.Model):
+    calorias = models.PositiveIntegerField(default=None)
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created = models.DateField(auto_now_add=True)
+
+    @property
+    def get_day(self):
+        return self.created.day
+    
+    def get_month(self):
+        return self.created.month
     

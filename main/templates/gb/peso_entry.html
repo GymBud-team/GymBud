@@ -1,11 +1,11 @@
 {%extends 'gb/base.html'%}
 
 {%block title%}
-<p><a href="{%url 'gb:peso'%}">GymBud</a> Nova entrada de peso</p>
+<p><a href="{%url 'gb:peso' usuario.pk%}">GymBud</a> Nova entrada de peso</p>
 {%endblock%}
 
 {%block content%}
-<h1>{{request.user}}</h1>
+<h1>{{usuario}}</h1>
 <form method="POST" action="">
     {%csrf_token%}
     {{form.as_p}}

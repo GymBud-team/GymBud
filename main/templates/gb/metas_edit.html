@@ -1,11 +1,11 @@
 {%extends 'gb/base.html'%}
 
 {%block title%}
-<p><a href="{%url 'gb:confirmed'%}">GymBud</a> Editar suas metas</p>
+<p><a href="{%url 'gb:confirmed' usuario.pk%}">GymBud</a> Editar suas metas</p>
 {%endblock%}
 
 {%block content%}
-<h1>{{request.user}}</h1>
+<h1>{{usuario}}</h1>
 <form method="POST" action="">
     {%csrf_token%}
     {{form.as_p}}

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import uuid
+from datetime import datetime
 
 class Caracteristicas(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -69,3 +71,9 @@ class IngestaoCalorias(models.Model):
     def get_month(self):
         return self.created.month
     
+class Post(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    image = models.ImageField(upload_to='post_images')
+    caption = models.TextField(default=None)
+    created = models.DateTimeField(default=datetime.now)

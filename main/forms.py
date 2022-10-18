@@ -47,3 +47,12 @@ class IngestaoCaloriasForm(ModelForm):
     class Meta:
         model = IngestaoCalorias
         fields = ['calorias']
+
+class PostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['image', 'caption']
+        labels = {
+            'image':'Subir Imagem',
+            'caption':'Legenda'
+        }

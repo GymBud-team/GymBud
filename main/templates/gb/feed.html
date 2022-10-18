@@ -1,0 +1,23 @@
+{%extends 'gb/base.html'%}
+
+{%block title%}
+<p><a href="{%url 'gb:confirmed' request.user.pk %}">GymBud</a> Feed de Posts</p>
+{%endblock%}
+
+{%block content%}
+<h4><a href="{% url 'gb:create_post' request.user.pk %}">Criar postagem</a></h4>
+<hr/>
+{% if posts %}
+    {% for post in posts reversed %}
+        <h3>@{{post.usuario}}</h3>
+
+        {% if post.image %}
+        <img src="{{post.image.url}}" alt="img" height="15%" width="15%">
+        {%endif%}
+        <span><p><strong>@{{post.usuario}}</strong> {{post.caption}}</p></span>
+    <hr/>
+    {% endfor %}
+{%else%}
+        <h2>Não há nada aqui. <a href="{% url 'gb:create_post' request.user.pk %}">Faça um post!</a></h2>
+{%endif%}
+{%endblock content%}

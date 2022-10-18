@@ -17,4 +17,6 @@ urlpatterns = [
     path('confirmed/<str:pk>/',views.confirmed, name='confirmed'),
     path('peso/<str:pk>/',views.peso, name='peso'),
     path('peso/entry/<str:pk>/',views.peso_entry, name='peso_entry'),
+    path('createpost/<str:pk>/',views.create_post, name='create_post'),
+    path('feed/',views.feed, name='feed')
 ]

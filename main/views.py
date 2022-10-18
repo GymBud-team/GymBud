@@ -34,7 +34,7 @@ def logoutUser(request):
 def register(request):
     instance = User()
     if request.user.is_authenticated:
-        instance = User.objects.get(pk = usuario.pk)
+        instance = User.objects.get(pk = request.user.pk)
 
     form = CreateFormUser(request.POST, instance=instance)
     if request.method == 'POST':
@@ -104,7 +104,7 @@ def define_metas(request, pk):
 
 def metas(request, pk):
     usuario = User.objects.get(pk=pk)
-    metas = Metas.objects.get(pk = usuario.pk)
+    metas = Metas.objects.get(pk = request.user.pk)
     context = {'usuario': usuario, 'metas': metas} 
     return render(request, "gb/metas_info.html", context)
 
@@ -252,7 +252,25 @@ def confirmed(request, pk=None):
     context = {'usuario':usuario, "metas": metas, "caracteristicas": caracteristicas, 'ingestao_agua':ingestao_agua, 'ingestao_calorias':ingestao_calorias}
     return render(request,'gb/confirmed.html', context)
 
+def create_post(request,pk):
+    form = PostForm()
+    usuario = User.objects.get(pk=pk)
+    if request.method=='POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            obj = form.save()
+            obj.usuario = usuario
+            obj.save()
+        
+            return redirect('gb:confirmed', usuario.pk)
+    context={'form':form, 'usuario':usuario}
+    return render(request, 'gb/postForm.html', context)
 
+def feed(request):
+    posts = Post.objects.all()
+
+    context={'posts':posts}
+    return render(request, 'gb/feed.html', context)
 def csrf_failure(request, reason=""):
     context = {'message': 'some custom messages'}
     return render('gb/errocsrf.html' , context)

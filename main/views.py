@@ -243,7 +243,7 @@ def confirmed(request, pk=None):
     else:
         usuario = User.objects.get(pk=request.user.pk)
     if not request.user.is_authenticated:
-        return redirect('gb:register', usuario.pk)
+        return redirect('gb:register', usuario)
     
     metas = Metas.objects.get(pk=usuario.pk)
     caracteristicas = Caracteristicas.objects.get(pk=usuario.pk)

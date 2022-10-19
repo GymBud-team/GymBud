@@ -9,7 +9,7 @@ from datetime import date, timedelta
 
 # Landing Page
 def index(request):
-    carac_last = Caracteristicas.objects.latest('usuario_id')
+    """ carac_last = Caracteristicas.objects.latest('usuario_id')
     metas_last = Metas.objects.latest('id')
 
     if request.user.is_authenticated and carac_last.usuario_id < request.user.id:
@@ -17,7 +17,7 @@ def index(request):
     elif request.user.is_authenticated and metas_last.usuario_id < request.user.id:
         return redirect('gb:define_metas')
     elif request.user.is_authenticated:
-        return redirect('gb:confirmed')
+        return redirect('gb:confirmed') """
 
     return render(request, 'gb/index.html')
 
@@ -69,9 +69,9 @@ def register(request):
     return render(request, 'gb/register.html', context)
 
 def define_caracteristicas(request):
-    carac_last = Caracteristicas.objects.latest('usuario_id')
+    """ carac_last = Caracteristicas.objects.latest('usuario_id')
     if request.user.is_authenticated and carac_last.usuario_id == request.user.id:
-        return redirect('gb:define_metas')
+        return redirect('gb:define_metas') """
 
     instance = Caracteristicas()
     
@@ -293,5 +293,5 @@ def feed(request):
     return render(request, 'gb/feed.html', context)
 
 def csrf_failure(request, reason=""):
-    context = {'message': 'some custom messages'}
-    return render('gb/errocsrf.html' , context)
+    context = {'message': 'erro no cadastro'}
+    return render(request, 'gb/errocsrf.html' , context)

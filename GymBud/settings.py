@@ -79,10 +79,23 @@ WSGI_APPLICATION = 'GymBud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "d491fe8qm3eg3k",
+        'USER': "pqcdnmpaojdczn",
+        'PASSWORD': "407a2d4d93a24c531b76089c5e16f1a4b2a0fcd3a9fcb5716210fcafee4058c2",
+        'HOST': "ec2-54-163-34-107.compute-1.amazonaws.com",
+        'PORT': "5432",  # 5432 by default
     }
 }
 
@@ -121,13 +134,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static').replace('\\', '/')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles').replace('\\', '/')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static').replace('\\', '/'),)
 django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+DISABLE_COLLECTSTATIC=1
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

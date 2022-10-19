@@ -1,28 +1,205 @@
-{% extends 'gb/base.html' %}
 
-{%block title%}
-<p><a href="{%url 'gb:index' %}">GymBud</a> Login</p>
-{%endblock%}
 
 {%block content%}
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" integrity="sha512-RvQxwf+3zJuNwl4e0sZjQeX7kUa3o82bDETpgVCH2RiwYSZVDdFJ7N/woNigN/ldyOOoKw8584jM4plQdt8bhA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Login</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: url(../../../static/back2.jpg);
+        background-size: cover;
+        height: 100vh;
+        overflow: hidden;
+        font-family: Arial, Helvetica, sans-serif   ;
+    }
+    .centro{
+        max-width: 1100px;
+        padding: 0 2%;
+        display:flex; 
+        margin: 0 auto;
+    }
+    header{
+        background-color: rgba(0,0,0,0.8);
+        height: 60px;
+        width: 100%;
+    }
+    .logo{
+        margin-top: 20px;
+        color: #ec4141;
+    }
+    .logo i{
+        padding-right: 5px;
+    }
+    .main-container{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .menu-container{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .menu-container a.active-menu{
+        background-color: #ec4141;
+    }
+    .menu-container a{
+        color:white;
+        display:inline-block;
+        margin: 0 10px ; 
+        text-decoration: none;
+        line-height: 60px;
+        padding: 0 10px;
+        transition: 0.8s;
+    }
+    .menu-container a.active-menu:hover{
+        color: black;
+    }
+    .menu-container a:hover{
+        color:#ec4141 ; 
+    }
+    h2{
+        font-size: 30px;
+        color: white;
+        text-align: center;
+        
+    }
+    .container{
+        width: 350px;
+        border-radius: 10px ;
+        box-shadow: 1px 2px 10px #ec4141, 3px 6px 20px #ec4141;
+        padding: 40px 50px;
+        top:-5%; 
+
+    }
+    input{
+        width: 100%;
+        height: 46px;
+        background: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #ec4141;
+        color: white;
+        transition:  .25 ease-in-out ;
+    }
+    .input-field{
+        position: relative;
+        margin-bottom: 27px;
+    }
+
+    label{
+        position: absolute;
+        top: -35px; 
+        left: 0;
+        margin-bottom: auto;
+        color: #ec4141;
+        transform: translateY(18px);
+        transition: 0.25 ease-in-out;
+    }
+    input:focus{
+        border-bottom: 2px solid white;
+        box-shadow: 0 1px 0 0 white;
+    }
+    input:focus + label{
+        transform: translateY(-14) scale(.8);
+        color: white;
+        font-weight: bold;
+    }
+    input:not(:placeholder-shown) + label{
+        transform: translateY(-14) scale(.8);
+        color: white;
+        font-weight: bold;
+    }
+    input:not(:placeholder-shown){
+        border-bottom: 2px solid #ec4141;
+        box-shadow: 0 1px 0 0 white;
+    }
+    input::placeholder{
+        color: white;
+    }
+    button{
+        padding: 15px 50px;
+        margin: 20px;
+        border: 2px solid #ec4141;
+        background-color: transparent;
+        color: white;
+        text-transform: uppercase;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 300ms ease-in-out ;
+    }
+    button:hover{
+        background-color: #ec4141;
+    }
+    .center{
+        text-align: center;
+    }
+    .link-cadastro{
+        color: white;
+        font-size: 13px;
+        text-align: center;
+
+    }
+    .link-cadastro a {
+        color: #ec4141;
+        text-decoration: none;
+        transition: all 300ms ease-in-out;
+    }
+    .link-cadastro a:hover{
+        color: green;
+    }
+</style>
 <body>
-    <div>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <div class="input-user">
-                <input type="text" name="username" placeholder="username">
+    <section class="main">
+        <header>
+            <div class="centro menu-container">
+            <div class="logo" href=""> 
+                <h3><i class="fa-sharp fa-solid fa-house"></i><a href="{%url 'gb:index'%}">GYMBUD</a></h3>
             </div>
-            <div class="input-pass">
-                <input type="password" name="password" placeholder="password">
+            <div class="menu">
+                <a class="active-menu" href="">Login</a>
+                <a href = ""></a>
+                <a href = ""></a>
             </div>
-            <div class="btn-login">
-                <input type="submit" value="Login">
             </div>
-        </form>
-        {% for message in messages %}
-        <p id="messages">{{message}}</p>
-        {% endfor %}
+        </header>
+    <div class="main-container">
+    <div class="container">
+        <h2>Login</h2>
         <div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="input-user">
+                    <input type="text" name="username" placeholder="username">
+                </div>
+                <div class="input-pass">
+                    <input type="password" name="password" placeholder="password">
+                </div>
+                <div class="btn-login">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+            {% for message in messages %}
+            <p id="messages" style="color: white">{{message}}</p>
+            {% endfor %}
+        <div>
+    </div>
+    </div>
+</section>
 </body>
+</html>
 {%endblock%}

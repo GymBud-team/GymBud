@@ -1,9 +1,197 @@
 {%extends 'gb/base.html'%}
-{%block title%}
-<strong>GymBud</strong>
-{%endblock%}
-
 {%block content%}
-<h1><a href="{%url 'gb:login'%}">Login</a></h1>
-<h1><a href="{%url 'gb:register'%}">Cadastro</a></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYMBUD</title>
+    <style>
+        *{
+            margin : 0 ; 
+            padding: 0 ;
+            box-sizing: border-box;
+            font-family: sans-serif ; 
+        }
+        
+        .center{
+            max-width: 1100px;
+            padding: 0 2%;
+            display:flex; 
+            margin: 0 auto;
+        }
+        header{
+            background-color: rgba(0, 0, 0,0.6);
+            height: 60px;
+        }
+        .logo{
+            margin-top: 8px ;
+            color:#ec4141;
+            margin-top: 20px;
+        }
+
+        .menu-container{
+            width: 100%;
+            justify-content: space-between;
+        }
+        .menu-container a.active-menu{
+            background-color: #ec4141;
+        }
+        .menu-container a{
+            color:white;
+            display:inline-block;
+            margin: 0 10px ; 
+            text-decoration: none;
+            line-height: 60px;
+            padding: 0 10px;
+            transition: 0.8s;
+        }
+        .menu-container a.active-menu:hover{
+            color: black;
+        }
+        .menu-container a:hover{
+            color:#ec4141 ; 
+        }
+        section.main{
+            min-height: 800px;
+            background-image: url(https://cdn.vidaativa.pt/uploads/2017/07/pessoas-treinar-ginasio.jpg);
+            background-position: center;
+            background-size:cover;
+            
+        }
+        .texto-pag-inicial{
+            color:#ec4141;
+            position: absolute;
+            top: 60px; 
+            right: 40px;
+            margin-top:20px ;
+            font-family:monospace;
+        }
+        .texto-pag-inicial{
+            top: 70px;
+            margin-top:30px ; 
+        }
+        .texto-pag-inicial h3{
+            color:white;
+            font-size: 20px;
+        }
+        section.produtos{
+            background-color: #ec4141;
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+            font-family: monospace;
+        }
+        .historia-single{
+            text-align: left;
+        }
+        .produto-container{
+            width: 100%;
+            justify-content: space-around;
+        }
+        .historia-single{
+            width:100%;
+            margin: 0 20px;
+            font-size: 12px;
+        }
+        .historia-single img{
+            width: 100%;
+            display:block; 
+        }
+        .historia-single h3{
+            text-align: center;
+            background-color: #ec4141;
+            border: 1px solid white;
+            padding: 8px;
+        }
+        .historia-single p {
+            background-color: white;
+            padding: 8px;
+            color: black;
+        }
+        footer{
+            background-color: #333;
+            text-align: center ;
+            padding: 8px; 
+            color:white; 
+        }
+        .login{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgba(0, 0, 0 , 0.8);
+            position: absolute;
+            top: 25%;
+            left: 8%;
+            padding: 70px;
+            border-radius: 15px ;
+            color: white;
+        }
+        .button-cadastro{
+            text-align: center;
+            color: black;
+        }
+        .cabecalho-cadastro{
+            color: #ec4141;
+        }
+        .nome{
+            font-style: black;
+        }
+        
+    </style>
+</head>
+<body>
+<section class="main">
+    <header>
+        <div class="center menu-container">
+            <div class="logo">
+                <h3><a href="{%url 'gb:index'%}">GYMBUD</h3>
+            </div>
+            <div class="menu">
+                <a class="active-menu" href="{%url 'gb:login'%}">Login</a>
+                <a href = " ">H1</a>
+                <a href = " ">H2</a>
+            </div>
+        </div>
+    </header>
+    <div class="texto-pag-inicial" ><h1>#TeamGymBud</h1><h3>working for your progress</h3></div>
+</section>
+<section class="produtos"> 
+    <h3>To achieve your best shape!</h3>
+    <p>como a gente vai ajudar o cliente a atingir o melhor fisico</p>
+    <br/>
+    <br/>
+    <div class="center produto-container">
+        <div class="historia-single">
+            <img src= "historia1.jpg">
+            <h3>contador de agua</h3>
+            <p>nosso contador de agua ajuda a você bater sua meta diaria e ficar mais proximo do seu melhor fisico</p>
+        </div>
+        <div class="historia-single">
+            <img src= "historia2.jpg">
+            <h3>contador de calorias</h3>
+            <p>nosso contador de agua ajuda a você bater sua meta diaria e ficar mais proximo do seu melhor fisico</p>
+        </div>
+        <div class="historia-single">
+            <img src= "historia3.jpg">
+            <h3>acompanhamento da sua evolucao</h3>
+            <p>atraves do cadastro personalizado nos sabemos suas metas e dessa forma conseguimos ver suas pequenas evolucoes</p>
+        </div>
+    </div>
+    <div class="login">
+        <h1 class="cabecalho-cadastro">Login</h1>
+        <br><br>
+        <input class="nome" type="text" placeholder="Nome do Usuário">
+        <br><br>
+        <input class="senha" type="password" placeholder="Senha">
+        <br><br>
+        <button href="{%url 'gb:login'%}">entrar</button>
+        <br><br>
+    <p>você ainda não faz parte do #TeamGymBud ?</p>
+        <br><br>
+        <a href="{%url 'gb:register'%}">Cadastro Personalizado</a>
+    </div>
+</section>
+<footer><p>todos os direitos reservados!</p></footer>
+</body>
+</html>
 {%endblock%}

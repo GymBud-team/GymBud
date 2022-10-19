@@ -1,0 +1,28 @@
+{%extends 'gb/base.html'%}
+
+{%block title%}
+<p><a href="{%url 'gb:confirmed'%}">GymBud</a> Postagem</p>
+{%endblock%}
+
+{% block content %}
+<p><a href="{% url 'gb:feed' %}">Voltar</a></p>
+<h2>{{post.usuario}}</h2>
+<img src="{{post.image.url}}" alt="img" height="15%" width="15%">
+<br>
+<br>
+<h3>Comentarios</h3>
+<form method="POST" action="">
+    {%csrf_token%}
+    {% for field in form.visible_fields %}
+        {{ field.label_tag }}<br>
+        {{ field }}
+    {% endfor %}
+    <input type="submit" value="Adicionar">
+    <br>
+    <br>
+</form>
+{% for comentario in comments %}
+<h5 ><strong>{{comentario.usuario}}</strong></h5>
+<p>{{comentario.comentario}}</p>
+{% endfor %}
+{% endblock content %}

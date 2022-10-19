@@ -1,15 +1,15 @@
 {%extends 'gb/base.html'%}
 
 {%block title%}
-<p><a href="{%url 'gb:confirmed' usuario.pk %}">GymBud</a> main</p>
+<p><a href="{%url 'gb:confirmed' %}">GymBud</a> main</p>
 <h1>{{request.user}}</h1>
 
 {%endblock%}
 {% block content %}
-<h4><a href="{% url 'gb:metas_info' usuario.pk %}">Suas metas</a></h4>
-<h4><a href="{% url 'gb:peso' usuario.pk %}">Seu peso</a></h4>
-<h4><a href="{% url 'gb:agua' usuario.pk %}">Ingestão de água</a></h4>
-<h4><a href="{% url 'gb:calorias' usuario.pk %}">Ingestão de calorias</a></h4>
+<h4><a href="{% url 'gb:metas_info'  %}">Suas metas</a></h4>
+<h4><a href="{% url 'gb:peso'  %}">Seu peso</a></h4>
+<h4><a href="{% url 'gb:agua'  %}">Ingestão de água</a></h4>
+<h4><a href="{% url 'gb:calorias'  %}">Ingestão de calorias</a></h4>
 <h4><a href="{% url 'gb:feed' %}">Feed de Posts</a></h4>
 <h4><a href="{%url 'gb:logout'%}">Logout</a></h4>
 <br>

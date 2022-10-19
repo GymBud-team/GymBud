@@ -56,3 +56,11 @@ class PostForm(ModelForm):
             'image':'Subir Imagem',
             'caption':'Legenda'
         }
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['comentario']
+        labels = {
+            'comentario':'Deixe um comentário:',
+        }

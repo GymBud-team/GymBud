@@ -9,7 +9,15 @@ from datetime import date, timedelta
 
 # Landing Page
 def index(request):
-        
+    carac_last = Caracteristicas.objects.latest('usuario_id')
+    metas_last = Metas.objects.latest('id')
+
+    if request.user.is_authenticated and carac_last.usuario_id < request.user.id:
+        return redirect('gb:caracteristicas')
+    elif request.user.is_authenticated and metas_last.usuario_id < request.user.id:
+        return redirect('gb:define_metas')
+    elif request.user.is_authenticated:
+        return redirect('gb:confirmed')
 
     return render(request, 'gb/index.html')
 
@@ -61,7 +69,10 @@ def register(request):
     return render(request, 'gb/register.html', context)
 
 def define_caracteristicas(request):
-    
+    carac_last = Caracteristicas.objects.latest('usuario_id')
+    if request.user.is_authenticated and carac_last.usuario_id == request.user.id:
+        return redirect('gb:define_metas')
+
     instance = Caracteristicas()
     
     

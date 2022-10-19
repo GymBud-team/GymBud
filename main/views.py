@@ -133,7 +133,7 @@ def edit_metas(request):
     context = {'form': form}
     return render(request,'gb/metas_edit.html', context)
 
-def peso(request, pk):
+def peso(request):
     metas = Metas.objects.get(id = request.user.id)
     caracteristicas = Caracteristicas.objects.get(id = request.user.id)
     historico = PesoHistory.objects.filter(usuario_id = request.user.id)

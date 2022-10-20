@@ -9,7 +9,7 @@ from datetime import date, timedelta
 
 # Landing Page
 def index(request):
-    """ carac_last = Caracteristicas.objects.latest('usuario_id')
+    carac_last = Caracteristicas.objects.latest('usuario_id')
     metas_last = Metas.objects.latest('id')
 
     if request.user.is_authenticated and carac_last.usuario_id < request.user.id:
@@ -17,7 +17,16 @@ def index(request):
     elif request.user.is_authenticated and metas_last.usuario_id < request.user.id:
         return redirect('gb:define_metas')
     elif request.user.is_authenticated:
-        return redirect('gb:confirmed') """
+        return redirect('gb:confirmed')
+    
+    if(request.method == 'POST'):
+
+        user = authenticate(username=request.POST['username'], password = request.POST['password'])
+        if user is not None:
+            login(request,user)
+            return redirect('gb:confirmed')
+        else:
+            messages.info(request, "Usuário ou senha incorretos.")
 
     return render(request, 'gb/index.html')
 
@@ -69,9 +78,9 @@ def register(request):
     return render(request, 'gb/register.html', context)
 
 def define_caracteristicas(request):
-    """ carac_last = Caracteristicas.objects.latest('usuario_id')
+    carac_last = Caracteristicas.objects.latest('usuario_id')
     if request.user.is_authenticated and carac_last.usuario_id == request.user.id:
-        return redirect('gb:define_metas') """
+        return redirect('gb:define_metas')
 
     instance = Caracteristicas()
     

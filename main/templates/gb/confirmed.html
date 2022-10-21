@@ -1,3 +1,4 @@
+{% load static %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -138,23 +139,23 @@
         <ul class="center produto-container">
             <li class="historia-single">
                 <h3>Ingestao De Água</h3>
-                <a href="{% url 'gb:agua'  %}"><img class="imagem" src="../../../static/aguaBranco.png" width="200"></a> 
+                <a href="{% url 'gb:agua'  %}"><img class="imagem" src="{% static 'aguaBranco.png' %}" width="200"></a> 
             </li>
             <li class="historia-single">
                 <h3>Contador De Calorias</h3>
-                <a href="{% url 'gb:calorias'  %}"><img class="imagem" src="../../../static/caloriasBranco.png" width="200"></a>
+                <a href="{% url 'gb:calorias'  %}"><img class="imagem" src="{% static 'caloriasBranco.png' %}" width="200"></a>
             </li>
             <li class="historia-single">
                 <h3>Postagens</h3>
-                <a href="{% url 'gb:feed' %}"><img class="imagem" src="../../../static/postagemBranco.png" width="200"></a>
+                <a href="{% url 'gb:feed' %}"><img class="imagem" src="{% static 'postagemBranco.png' %}" width="200"></a>
             </li>
             <li class="historia-single">
                 <h3>acompanhamento Do Peso</h3>
-                <a href="{% url 'gb:peso'  %}"><img class="imagem" src="../../../static/pesoBranco.png" width="200"></a>
+                <a href="{% url 'gb:peso'  %}"><img class="imagem" src="{% static 'pesoBranco.png' %}" width="200"></a>
             </li>
             <li class="historia-single">
                 <h3>Metas</h3>
-                <a href="{% url 'gb:metas_info'  %}"><img class="imagem" src="../../../static/metasBranco.png" width="200"></a>
+                <a href="{% url 'gb:metas_info'  %}"><img class="imagem" src="{% static 'metasBranco.png' %}" width="200"></a>
             </li>
         </ul>
 </section>

@@ -145,7 +145,7 @@ def edit_metas(request):
 def peso(request):
     metas = Metas.objects.get(id = request.user.id)
     caracteristicas = Caracteristicas.objects.get(id = request.user.id)
-    historico = PesoHistory.objects.filter(usuario_id = request.user.id)
+    historico = PesoHistory.objects.filter(id = request.user.id)
     
     form_history = PesoHistoryForm(request.POST or None)
     form = PesoForm(request.POST or None, instance=caracteristicas)

@@ -1,4 +1,4 @@
- 
+{% load static %}
 {%block content%}
 
 
@@ -255,17 +255,17 @@
     <div class="center produto-container">
         <div class="historia-single">
             <h3>CONTADOR DE ÁGUA</h3>
-            <img src= "../../../static/historia1.jpg">
+            <img src= "{% static 'historia1.jpg' %}">
             <p>Ajuda você a bater sua meta diária de consumo de água.<br><br></p>
         </div>
         <div class="historia-single">
             <h3>CONTADOR DE CALORIAS</h3>
-            <img src= "../../../static/historia2.jpg">
+            <img src= "{% static 'historia2.jpg' %}">
             <p>Ajuda você a bater sua meta diária de consumo de água.<br><br></p>
         </div>
         <div class="historia-single">
             <h3>DEFINIÇÃO DE METAS</h3>
-            <img src= "../../../static/historia3.jpg">
+            <img src= "{% static 'historia3.jpg' %}">
             <p>Através do cadastro personalizado, é possível acompanhar sua evolução conforme suas metas.<br><br></p>
         </div>
     </div>

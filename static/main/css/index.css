@@ -1,0 +1,219 @@
+* {
+    margin : 0 ; 
+    padding: 0 ;
+    box-sizing: border-box;
+    font-family: sans-serif ; 
+}
+
+.center{
+    max-width: 1100px;
+    padding: 0 2%;
+    display:flex; 
+    margin: 0 auto;
+}
+header{
+    background-color: rgba(0, 0, 0,0.6);
+    height: 60px;
+}
+.logo{
+    color:#ec4141;
+    margin-top: 20px;
+}
+
+.menu-container{
+    width: 100%;
+    justify-content: space-between;
+}
+.menu-container a.active-menu{
+    background-color: #ec4141;
+}
+.menu-container a{
+    color:white;
+    display:inline-block;
+    margin: 0 10px ; 
+    text-decoration: none;
+    line-height: 60px;
+    padding: 0 10px;
+    transition: 0.8s;
+}
+.menu-container a.active-menu:hover{
+    color: black;
+}
+.menu-container a:hover{
+    color:#ec4141 ; 
+}
+section.main{
+    min-height: 800px;
+    background-image: url(https://cdn.vidaativa.pt/uploads/2017/07/pessoas-treinar-ginasio.jpg);
+    background-position: center;
+    background-size:cover;
+
+}
+.texto-pag-inicial{
+    color:#ec4141;
+    position: absolute;
+    top: 20pxpx; 
+    right: 40px;
+    margin-top:8px ;
+    font-family:monospace;
+}
+.texto-pag-inicial h3{
+    color:white;
+    font-size: 20px;
+}
+section.produtos{
+    background-color: #ec4141;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+    font-family: monospace;
+}
+.historia-single{
+    text-align: left;
+}
+.produto-container{
+    width: 100%;
+    justify-content: space-around;
+}
+.historia-single{
+    width:100%;
+    margin: 0 20px;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: top;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: o.3s;
+}
+.historia-single img{
+    width: 100%;
+    display:block; 
+}
+.historia-single h3{
+    text-align: center;
+    background-color: black;
+    border: 1px solid black;
+    padding: 8px;
+}
+.historia-single p {
+    background-color: white;
+    padding: 8px;
+    color: black;
+}
+footer{
+    background-color: #333;
+    text-align: center ;
+    padding: 8px; 
+    color:white; 
+}
+.login{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(0, 0, 0 , 0.8);
+    position: absolute;
+    top: 25%;
+    left: 8%;
+    padding: 70px;
+    border-radius: 15px ;
+    color: white;
+}
+.button-cadastro{
+    text-align: center;
+    color: white;
+}
+.cabecalho-cadastro{
+    color: white;
+}
+.nome{
+    font-style: black;
+}
+input{
+    width: 100%;
+    height: 46px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ec4141;
+    color: white;
+    transition:  .25 ease-in-out ;
+}
+.input-field{
+    position: relative;
+    margin-bottom: 27px;
+}
+
+label{
+    position: absolute;
+    top: -35px; 
+    left: 0;
+    margin-bottom: auto;
+    color: #ec4141;
+    transform: translateY(18px);
+    transition: 0.25 ease-in-out;
+}
+input:focus{
+    border-bottom: 2px solid white;
+    box-shadow: 0 1px 0 0 white;
+}
+input:focus + label{
+    transform: translateY(-14) scale(.8);
+    color: white;
+    font-weight: bold;
+}
+input:not(:placeholder-shown) + label{
+    transform: translateY(-14) scale(.8);
+    color: white;
+    font-weight: bold;
+}
+input:not(:placeholder-shown){
+    border-bottom: 2px solid #ec4141;
+    box-shadow: 0 1px 0 0 white;
+}
+input::placeholder{
+    color: white;
+}
+button{
+    padding: 15px 50px;
+    margin: 20px;
+    border: 2px solid #ec4141;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out ;
+}
+button:hover{
+    background-color: #ec4141;
+}
+.botao-centro{
+    text-align: center;
+}
+.link-cadastro{
+    color: white;
+    font-size: 15px;
+    text-align: center;
+
+}
+.link-cadastro a {
+    color: #ec4141;
+    text-decoration: none;
+    transition: all 300ms ease-in-out;
+}
+.link-cadastro a:hover{
+    color: green;
+}
+
+.historia-single:hover {
+    transform: scale(1.1);
+    box-shadow: inset 0 0 20px 6px ;
+}
+
+.historia-single:active {
+    border-width: 4px;
+    border-color: white;
+}
+.historia-single p {
+    background-color: black;
+    color: white;
+}

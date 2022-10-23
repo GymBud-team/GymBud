@@ -5,7 +5,6 @@ app_name = 'gb'
 urlpatterns = [
 
     path('', views.index, name='index'),
-    path('login/', views.loginPage, name='login'),
     path('register/', views.register, name='register'),
     path('logout/', views.logoutUser, name="logout"),
     path('agua/',views.water_count, name="agua"),

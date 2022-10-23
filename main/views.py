@@ -30,19 +30,6 @@ def index(request):
 
     return render(request, 'gb/index.html')
 
-def loginPage(request):
-    
-    if(request.method == 'POST'):
-
-        user = authenticate(username=request.POST['username'], password = request.POST['password'])
-        if user is not None:
-            login(request,user)
-            return redirect('gb:confirmed')
-        else:
-            messages.info(request, "Usuário ou senha incorretos.")
-
-    return render(request,'gb/login.html')
-
 def logoutUser(request):
     logout(request)
     return redirect('gb:index')

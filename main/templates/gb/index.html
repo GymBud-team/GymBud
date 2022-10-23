@@ -10,7 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GYMBUD</title>
-    <link rel="stylesheet" href="../../../static/main/css/index.css">
+<!--     <link rel="stylesheet" href="../../../static/main/css/index.css"> -->
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
 </head>
 <body>
 <section class="main">
@@ -21,7 +22,7 @@
             </div>
             <div class="menu">
                 <a style="background-color: #ec4141;" href ="{%url 'gb:register'%}">Cadastro</a>
-                <a href = " ">Quem Somos</a>
+<!--                 <a href = " ">Quem Somos</a> -->
             </div>
         </div>
     </header>
@@ -55,11 +56,11 @@
             <h1 class="cabecalho-cadastro">LOGIN</h1>
             <br><br>
             <div class="input-user">
-                <input type="text" name="username" placeholder="username">
+                <input type="text" name="username" placeholder="Username">
             </div>
             <br>
             <div class="input-pass">
-                <input type="password" name="password" placeholder="password">
+                <input type="password" name="password" placeholder="Password">
             </div>
             {% for message in messages %}
             <p id="messages" style="color: white">{{message}}</p>

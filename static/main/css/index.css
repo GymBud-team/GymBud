@@ -40,7 +40,7 @@ header{
     color: black;
 }
 .menu-container a:hover{
-    color:#ec4141 ; 
+    color: black ; 
 }
 section.main{
     min-height: 800px;

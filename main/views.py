@@ -124,14 +124,21 @@ def define_metas(request):
     return render(request,'gb/define_metas.html', context)
 
 def metas(request):
-    metas = Metas.objects.get(id = request.user.id)
+    metas = Metas.objects.filter(usuario_id = request.user.id)
+
+    for i in metas:
+        metas = i
+
     context = {'metas': metas} 
     return render(request, "gb/metas_info.html", context)
 
 def edit_metas(request):
-    instance = Metas.objects.get(id = request.user.id)
+    instance = Metas.objects.filter(usuario_id = request.user.id)
     
-    form = MetasForm(request.POST or None, instance=instance)
+    for i in instance:
+        pessoal = i
+
+    form = MetasForm(request.POST or None, instance=pessoal)
     if request.POST and form.is_valid():
         obj = form.save(commit=False) 
         obj.usuario = request.user
@@ -143,9 +150,16 @@ def edit_metas(request):
     return render(request,'gb/metas_edit.html', context)
 
 def peso(request):
-    metas = Metas.objects.get(id = request.user.id)
-    caracteristicas = Caracteristicas.objects.get(id = request.user.id)
-    historico = PesoHistory.objects.filter(id = request.user.id)
+    metas = Metas.objects.filter(usuario_id = request.user.id)
+    caracteristicas = Caracteristicas.objects.filter(usuario_id = request.user.id)
+    historico = PesoHistory.objects.filter(usuario_id = request.user.id)
+
+    for i in metas:
+        metas = i
+    
+    for i in caracteristicas:
+        caracteristicas = i 
+
     
     form_history = PesoHistoryForm(request.POST or None)
     form = PesoForm(request.POST or None, instance=caracteristicas)
@@ -167,17 +181,26 @@ def peso(request):
     context = {'metas': metas, 'caracteristicas': caracteristicas, 'historico': historico, 'form': form}    
     return render(request, "gb/peso.html", context)
 
-def peso_entry(request):
+'''def peso_entry(request):
     instance = Caracteristicas.objects.get(id = request.user.id)
 
     context = {'usuario'}
-    return render(request,'gb/peso_entry.html', context)
+    return render(request,'gb/peso_entry.html', context)'''
 
 def water_count(request):
     form = IngestaoAguaForm()
-    instance = IngestaoAgua.objects.get(id = request.user.id)
+
+    instance = IngestaoAgua.objects.filter(usuario_id = request.user.id)
+
+    for i in instance:
+        instance = i
+
     instance_last_date = IngestaoAgua.objects.latest('created')
-    metas = Metas.objects.get(id = request.user.id)
+    metas = Metas.objects.filter(usuario_id = request.user.id)
+
+    for i in metas:
+        metas = i
+    
     bateu_meta = False
     if(instance_last_date.get_day > instance.get_day):
         consumo = 0
@@ -214,9 +237,17 @@ def water_count(request):
 
 def calorie_count(request):
     form = IngestaoCaloriasForm()
-    instance = IngestaoCalorias.objects.get(id = request.user.id)
+    instance = IngestaoCalorias.objects.filter(usuario_id = request.user.id)
+
+    for i in instance:
+        instance = i
+
     instance_last_date = IngestaoCalorias.objects.latest('created')
-    metas = Metas.objects.get(id = request.user.id)
+    metas = Metas.objects.filter(usuario_id = request.user.id)
+
+    for i in metas:
+        metas = i
+
     bateu_meta = False
     if(instance_last_date.get_day > instance.get_day):
         consumo = 0
@@ -256,10 +287,22 @@ def confirmed(request):
     if not request.user.is_authenticated:
         return redirect('gb:register')
     
-    metas = Metas.objects.get(id = request.user.id)
-    caracteristicas = Caracteristicas.objects.get(id = request.user.id)
-    ingestao_agua = IngestaoAgua.objects.get(id = request.user.id)
-    ingestao_calorias = IngestaoCalorias.objects.get(id = request.user.id)
+    metas = Metas.objects.filter(usuario_id = request.user.id)
+    for i in metas:
+        metas = i
+
+    caracteristicas = Caracteristicas.objects.filter(usuario_id = request.user.id)
+    for i in caracteristicas:
+        caracteristicas = i
+
+    ingestao_agua = IngestaoAgua.objects.filter(usuario_id = request.user.id)
+    for i in ingestao_agua:
+        metingestao_aguaas = i
+
+    ingestao_calorias = IngestaoCalorias.objects.filter(usuario_id = request.user.id)
+    for i in ingestao_calorias:
+        ingestao_calorias = i
+
     context = {"metas": metas, "caracteristicas": caracteristicas, 'ingestao_agua':ingestao_agua, 'ingestao_calorias':ingestao_calorias}
     return render(request,'gb/confirmed.html', context)
 

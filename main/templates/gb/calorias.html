@@ -1,15 +1,15 @@
 {%extends 'gb/base.html'%}
 
 {%block title%}
-<p><a href="{%url 'gb:confirmed' %}">GymBud</a> Ingestão de Calorias</p>
+<p><a href="{%url 'gb:confirmed' %}">GymBud</a> Ingestão de caloriasorias</p>
 <h1>{{usuario}}</h1>
 {%endblock%}
 
 {%block content%}
 {% if um_dig == True %}
-<h2>Dia 0{{dia}}/{{mes}} - Quantidade ingerida em kcal</h2>
+<h2>Dia 0{{dia}}/{{mes}} - Quantidade ingerida em calorias</h2>
 {% else %}
-<h2>Dia {{dia}}/{{mes}} - Quantidade ingerida em kcal</h2>
+<h2>Dia {{dia}}/{{mes}} - Quantidade ingerida em calorias</h2>
 {% endif %}
 <form method="POST" action="">
     {%csrf_token%}
@@ -17,14 +17,14 @@
     <input type="submit" value="Adicionar">
 </form>
 <div>
-    <p>Seu consumo até agora: <strong>{{consumo}} kcal</strong> </p>
+    <p>Seu consumo até agora: <strong>{{consumo}} calorias</strong> </p>
     {%if bateu_meta %}
     <p>Você bateu sua meta diária.</p>
     {%if falta != 0%}
-    <p><strong>{{falta}}kcal<strong> ultrapassados da meta.</p>
+    <p><strong>{{falta}}calorias<strong> ultrapassados da meta.</p>
     {%endif%}
     {%else%}
-    <p>Faltam <strong>{{falta}} kcal</strong> pra sua meta diária.</p>
+    <p>Faltam <strong>{{falta}} calorias</strong> pra sua meta diária.</p>
     {%endif%}
 </div>
 {%endblock%}

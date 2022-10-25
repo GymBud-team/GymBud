@@ -16,7 +16,7 @@ class CaracteristicasTestCase(TestCase):
         peso_inicial = 90.0,
         peso_atual = 90.0,
         altura = 1.80,
-        inicio = True     #auto_now_add = True
+        inicio = True    
         self.caracteristicas = Caracteristicas(usuario, idade, peso_inicial, peso_atual, altura, inicio)
     
     def test_caracteristicas_usuario_no(self):
@@ -73,8 +73,6 @@ class CaracteristicasTestCase(TestCase):
     def test_caracteristicas_altura_no(self):
         self.assertEqual(self.caracteristicas.altura(0), False)
 
-    #def test_caracteristicas_inicio(self):
-    #    self 
 
 
 
@@ -139,7 +137,7 @@ class PesoHistoryTestCase(TestCase):
     def setUp(self):
         usuario = 'Francisco' ,
         peso = 88.0 ,
-        created = 2000 # auto_now_add = True
+        created = 88.0 # auto_now_add = True
         self.pesohistory = PesoHistory(usuario, peso, created)
 
     def test_pesohistory_usuario_no(self):
@@ -163,11 +161,14 @@ class PesoHistoryTestCase(TestCase):
         else:
             return False
 
-    #def test_pesohistory_peso_cont(self):
-        #peso - peso antigo = created
+    def test_pesohistory_peso_cond2(self):
+        if self.pesohistory.peso != self.pesohistory.created:
+            return False
+        else: 
+            return True
 
-    # def test_pesohistory_created(self):
-        #created
+    def test_pesohistory_created(self):
+        self.assertTrue(self.pesohistory.created, 88.0)
     
 
 class IngestaoAguaTestCase(TestCase):
@@ -212,7 +213,7 @@ class IngestaoCaloriasTestCase(TestCase):
     def setUp(self):
         usuario = 'Francisco' ,
         calorias = 500,
-        created = True    #1500
+        created = 1500    #1500
         self.ingestaoCalorias = IngestaoCalorias(usuario, calorias, created)
 
     def test_ingestaoCalorias_usuario_no(self):
@@ -231,9 +232,12 @@ class IngestaoCaloriasTestCase(TestCase):
         self.assertEqual(self.ingestaoCalorias.calorias(500), True)
 
     def test_ingestaoCalorias_calorias_no(self):
-        self.assertEqual(self.ingestaoCalorias.calorias(), False) 
+        self.assertEqual(self.ingestaoCalorias.calorias(), False)
 
-    def test_ngestaoCalorias_created(self):
+    def test_ingestaoCalorias_created(self): 
+        self.assertTrue(self.ingestaoCalorias.created, 1500)
+
+    def test_ingestaoCalorias_created(self):
         k1 = self.meta.calorias - self.ingestaoAgua.calorias
         if k1 != self.ingestaocalorias.created :
             return False
@@ -266,9 +270,6 @@ class PostTestCase(TestCase):
 
     def test_post_caption_no(self):
         self.assertEqual(self.post.caption(' '), False)
-
-    #def test_post_created(self): 
-    #    self        DateTimeField(default=datetime.now)
 
 
 class CommentTestCase(TestCase):
@@ -305,10 +306,7 @@ class CommentTestCase(TestCase):
             return False
         else:
             return True
-    
-    #def test_comment_created(self):
-    #   self
 
         
-#if __name__ == '__main__':
- #   TestCase.main()
+if __name__ == '__main__':
+    TestCase.main()

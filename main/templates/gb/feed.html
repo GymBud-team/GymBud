@@ -1,24 +1,24 @@
-{%extends 'gb/base.html'%}
-
-{%block title%}
+{%extends 'gb/base.html'%} {%block title%}
 <p><a href="{%url 'gb:confirmed'  %}">GymBud</a> Feed de Posts</p>
-{%endblock%}
+{%endblock%} {%block content%}
+<div style="margin-left: 10px">
+  <h4><a href="{% url 'gb:create_post'  %}">Criar postagem</a></h4>
+  <hr />
+  {% if posts %} {% for post in posts reversed %}
+  <h3>@{{post.usuario}}</h3>
 
-{%block content%}
-<h4><a href="{% url 'gb:create_post'  %}">Criar postagem</a></h4>
-<hr/>
-{% if posts %}
-    {% for post in posts reversed %}
-        <h3>@{{post.usuario}}</h3>
-
-        {% if post.image %}
-        <img src="{{post.image.url}}" alt="img" height="15%" width="15%">
-        {%endif%}
-        <span><p><strong>@{{post.usuario}}</strong> {{post.caption}}</p></span>
-        <p><a href="{% url 'gb:post' post.id %}">Ver comentários</a></p>
-    <hr/>
-    {% endfor %}
-{%else%}
-        <h2>Não há nada aqui. <a href="{% url 'gb:create_post'  %}">Faça um post!</a></h2>
-{%endif%}
-{%endblock content%}
+  {% if post.image %}
+  <img src="{{post.image.url}}" alt="img" height="15%" width="15%" />
+  {%endif%}
+  <span
+    ><p><strong>@{{post.usuario}}</strong> {{post.caption}}</p></span
+  >
+  <span><p>{{post.number_of_likes}} curtidas</p></span>
+  <p><a href="{% url 'gb:post' post.id %}">Curtir/Comentar</a></p>
+  <hr />
+  {% endfor %} {%else%}
+  <h2>
+    Não há nada aqui. <a href="{% url 'gb:create_post'  %}">Faça um post!</a>
+  </h2>
+</div>
+{%endif%} {%endblock content%}

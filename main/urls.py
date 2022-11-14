@@ -18,5 +18,6 @@ urlpatterns = [
     #path('peso/entry/',views.peso_entry, name='peso_entry'),
     path('createpost/',views.create_post, name='create_post'),
     path('feed/',views.feed, name='feed'),
-    path('post/<str:pk>/', views.post, name="post"),
+    path('post/<int:pk>/', views.post, name="post"),
+    path('like/<int:pk>', views.like_post, name="like_post"),
 ]

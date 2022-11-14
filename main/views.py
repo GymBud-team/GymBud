@@ -1,11 +1,12 @@
 # Imports
 import sqlite3
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import *
 from datetime import date, timedelta
+from django.urls import reverse
 
 # Landing Page
 def index(request):
@@ -298,7 +299,9 @@ def post(request, pk):
     post = Post.objects.get(id = pk)
     form = CommentForm()
     comments = Comment.objects.filter(post=post)
-    new_comment = None
+
+    likes_count = get_object_or_404(Post, id= pk)
+
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -324,6 +327,11 @@ def create_post(request):
             return redirect('gb:feed')
     context={'form':form}
     return render(request, 'gb/postForm.html', context)
+
+def like_post(request, pk):
+    post = get_object_or_404(Post, id=request.POST.get('post_id'))
+    post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('gb:post', args=[str(pk)]))
 
 def feed(request):
     posts = Post.objects.all()

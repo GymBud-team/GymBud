@@ -76,15 +76,22 @@ class Post(models.Model):
     image = models.ImageField(upload_to='post_images')
     caption = models.TextField(default=None)
     created = models.DateTimeField(default=datetime.now)
+    likes = models.ManyToManyField(User, related_name='blogpost_like')
+
+    def number_of_likes(self):
+        return self.likes.count()
 
 class Comment(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     comentario = models.CharField(max_length = 300)
     created = models.DateTimeField(auto_now_add=True)
-
+    
     class Meta:
         ordering = ('-created',)
 
     def __str__(self):
         return 'Comment by {}'.format(self.name)
+
+    def number_of_comentario(self):
+        return self.comentario.count()

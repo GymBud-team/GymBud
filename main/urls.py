@@ -20,4 +20,5 @@ urlpatterns = [
     path('feed/',views.feed, name='feed'),
     path('post/<int:pk>/', views.post, name="post"),
     path('like/<int:pk>', views.like_post, name="like_post"),
+    path('requestworkout/', views.request_workout, name="requestWorkout")
 ]

@@ -9,6 +9,9 @@
 
 <h2>Peso Atual: {{caracteristicas.peso_atual}} kg</h2>
 <h2>Meta de peso: {{metas.peso}} kg</h2>
+{%if chart%}
+    <img src="data:image/png;base64 , {{chart|safe}}">
+{%endif%}
 <br>
 <form method="POST" action="">
     {%csrf_token%}

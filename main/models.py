@@ -95,3 +95,42 @@ class Comment(models.Model):
 
     def number_of_comentario(self):
         return self.comentario.count()
+
+class RequestWorkout(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    perda = 'Perda de Peso'
+    ganho = 'Ganho de Massa'
+    definicao = 'Definição'
+    bemestar = 'Bem-Estar'
+    manutencao = 'Manutenção de Físico'
+    goal_choices = (
+        (perda,'Perda de Peso') ,
+        (ganho,'Ganho de Massa'),
+        (definicao,'Definição'),
+        (bemestar,'Bem-Estar'),
+        (manutencao,'Manutenção de Físico'),
+    )
+
+    goal = models.TextField(default = None, choices = goal_choices)
+
+    segunda = 'Segunda-Feira'
+    terca = 'Terça-Feira'
+    quarta = 'Quarta-Feira'
+    quinta = 'Quinta-Feira'
+    sexta = 'Sexta-Feira'
+    sab = 'Sábado'
+    dom = 'Domingo'
+    days_choices = (
+        (segunda,'Segunda-Feira'),
+        (terca,'Terça-Feira'),
+        (quarta,'Quarta-Feira'),
+        (quinta,'Quinta-Feira'),
+        (sexta,'Sexta-Feira'),
+        (sab,'Sábado'),
+        (dom,'Domingo'),
+    )
+    hours_per_day = models.PositiveIntegerField(default = None)
+    # availability = models.BooleanField(default = None, choices = days_choices)
+
+    problemas = models.TextField(default = None)

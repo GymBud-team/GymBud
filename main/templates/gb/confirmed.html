@@ -21,7 +21,7 @@
             <div class="menu">
                 <a class="active-menu" href="{%url 'gb:logout'%}">Logout</a>
 <!--                 <a href = "">Quem Somos</a> -->
-                <span style="color: white;"><strong>{{request.user}}</strong></span>   
+                <span style="color: white;"> <a href="{%url 'gb:requestWorkout'%}">Solicitar Treino</a></span>   
             </div>
             </div>
         </header>
@@ -42,10 +42,10 @@
                 <h3>Acompanhamento De Peso</h3>
                 <a href="{% url 'gb:peso'  %}"><img class="imagem" src="{% static 'pesoBranco.png' %}" width="200"></a>
             </li>
-            <li class="historia-single">
-                <h3>Metas</h3>
-                <a href="{% url 'gb:metas_info'  %}"><img class="imagem" src="{% static 'metasBranco.png' %}" width="200"></a>
-            </li>
+                <li class="historia-single">
+                    <h3>Metas</h3>
+                    <a href="{% url 'gb:metas_info'  %}"><img class="imagem" src="{% static 'metasBranco.png' %}" width="200"></a>
+                </li>
         </ul>
 </section>
 </body>

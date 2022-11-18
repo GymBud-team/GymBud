@@ -7,7 +7,7 @@ from django.contrib import messages
 from .forms import *
 from datetime import date, timedelta
 from django.urls import reverse
-from .utils import get_plot
+
 # Landing Page
 def index(request):
     carac_last = Caracteristicas.objects.latest('usuario_id')

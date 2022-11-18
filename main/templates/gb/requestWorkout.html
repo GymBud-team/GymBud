@@ -1,13 +1,8 @@
-{%extends 'gb/base.html'%}
-
-{%block title%}
+{%extends 'gb/base.html'%} {%block title%}
 <p><a href="{%url 'gb:confirmed'%}">GymBud</a> Solicitação de Treino</p>
-{%endblock%}
-
-{%block content %}
-<form method='POST' action=''>
-    {%csrf_token%}
-    {{form.as_p}}
-    <input type="submit" value ="Submit">
+{%endblock%} {%block content %}
+<form method="POST" action="">
+  {%csrf_token%} {{form.as_p}}
+  <input type="submit" value="Submit" />
 </form>
 {%endblock content%}

@@ -148,7 +148,7 @@ def peso(request):
     for i in caracteristicas:
         caracteristicas = i 
 
-    
+
     form_history = PesoHistoryForm(request.POST or None)
     form = PesoForm(request.POST or None, instance=caracteristicas)
     if request.POST and form.is_valid() and form_history.is_valid():
@@ -342,3 +342,17 @@ def feed(request):
 def csrf_failure(request, reason=""):
     context = {'message': 'erro no cadastro'}
     return render(request, 'gb/errocsrf.html' , context)
+
+def request_workout(request):
+
+    form = WorkoutForm()
+    if request.method=='POST':
+        form = WorkoutForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.usuario = request.user
+            obj.save()
+            return render(request, 'gb/requested.html')
+
+    context = {'form':form}
+    return render(request,'gb/requestWorkout.html', context)

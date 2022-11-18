@@ -1,53 +1,92 @@
-{% block content %}
-{% load static%}
+{% block content %} {% load static%}
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css" integrity="sha512-RvQxwf+3zJuNwl4e0sZjQeX7kUa3o82bDETpgVCH2RiwYSZVDdFJ7N/woNigN/ldyOOoKw8584jM4plQdt8bhA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/fontawesome.min.css"
+      integrity="sha512-RvQxwf+3zJuNwl4e0sZjQeX7kUa3o82bDETpgVCH2RiwYSZVDdFJ7N/woNigN/ldyOOoKw8584jM4plQdt8bhA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>GymBud</title>
-    <link rel="stylesheet" href="{% static 'main/css/confirmed.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'main/css/confirmed.css' %}" />
+  </head>
+  <body>
     <section class="main">
-        <header>
-            <div class="centro menu-container">
-            <div class="logo" href=""> 
-                <h3><i class="fa-sharp fa-solid fa-house"></i>GYMBUD</h3>
-            </div>
-            <div class="menu">
-                <a class="active-menu" href="{%url 'gb:logout'%}">Logout</a>
-<!--                 <a href = "">Quem Somos</a> -->
-                <span style="color: white;"><strong>{{request.user}}</strong></span>   
-            </div>
-            </div>
-        </header>
-        <ul class="center produto-container">
-            <li class="historia-single">
-                <h3>Ingestao De Água</h3>
-                <a href="{% url 'gb:agua'  %}"><img class="imagem" src="{% static 'aguaBranco.png' %}" width="200"></a> 
-            </li>
-            <li class="historia-single">
-                <h3>Contador De Calorias</h3>
-                <a href="{% url 'gb:calorias'  %}"><img class="imagem" src="{% static 'caloriasBranco.png' %}" width="200"></a>
-            </li>
-            <li class="historia-single">
-                <h3>Postagens</h3>
-                <a href="{% url 'gb:feed' %}"><img class="imagem" src="{% static 'postagemBranco.png' %}" width="200"></a>
-            </li>
-            <li class="historia-single">
-                <h3>Acompanhamento De Peso</h3>
-                <a href="{% url 'gb:peso'  %}"><img class="imagem" src="{% static 'pesoBranco.png' %}" width="200"></a>
-            </li>
-            <li class="historia-single">
-                <h3>Metas</h3>
-                <a href="{% url 'gb:metas_info'  %}"><img class="imagem" src="{% static 'metasBranco.png' %}" width="200"></a>
-            </li>
-        </ul>
-</section>
-</body>
+      <header>
+        <div class="centro menu-container">
+          <div class="logo" href="">
+            <h3><i class="fa-sharp fa-solid fa-house"></i>GYMBUD</h3>
+          </div>
+          <div class="menu">
+            <a class="active-menu" href="{%url 'gb:requestWorkout'%}"
+              >Solicitar Treino</a
+            >
+            <a class="active-menu" href="{%url 'gb:logout'%}">Logout</a>
+            <!--                 <a href = "">Quem Somos</a> -->
+            <span style="color: white">{{request.user}}</span>
+          </div>
+        </div>
+      </header>
+      <ul class="center produto-container">
+        <li class="historia-single">
+          <h3>Ingestao De Água</h3>
+          <a href="{% url 'gb:agua'  %}"
+            ><img
+              class="imagem"
+              src="{% static 'aguaBranco.png' %}"
+              width="200"
+          /></a>
+        </li>
+        <li class="historia-single">
+          <h3>Contador De Calorias</h3>
+          <a href="{% url 'gb:calorias'  %}"
+            ><img
+              class="imagem"
+              src="{% static 'caloriasBranco.png' %}"
+              width="200"
+          /></a>
+        </li>
+        <li class="historia-single">
+          <h3>Postagens</h3>
+          <a href="{% url 'gb:feed' %}"
+            ><img
+              class="imagem"
+              src="{% static 'postagemBranco.png' %}"
+              width="200"
+          /></a>
+        </li>
+        <li class="historia-single">
+          <h3>Acompanhamento De Peso</h3>
+          <a href="{% url 'gb:peso'  %}"
+            ><img
+              class="imagem"
+              src="{% static 'pesoBranco.png' %}"
+              width="200"
+          /></a>
+        </li>
+        <li class="historia-single">
+          <h3>Metas</h3>
+          <a href="{% url 'gb:metas_info'  %}"
+            ><img
+              class="imagem"
+              src="{% static 'metasBranco.png' %}"
+              width="200"
+          /></a>
+        </li>
+      </ul>
+    </section>
+  </body>
 </html>
 {% endblock content %}

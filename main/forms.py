@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, forms
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from .models import *
@@ -63,4 +63,15 @@ class CommentForm(ModelForm):
         fields = ['comentario']
         labels = {
             'comentario':'Deixe um comentário:',
+        }
+class WorkoutForm(ModelForm):
+    class Meta:
+        model = RequestWorkout
+        exclude = ['usuario']
+        # widgets = {'avalability':forms.CheckboxInput()}
+        labels = {
+            'goal':'Seu objetivo:',
+            'hours_per_day':'Horas disponíveis por dia:',
+            # 'availability':'Qtd de dias disponíveis na semana:',
+            'problemas':'Alguma condição médica que devemos saber?'
         }

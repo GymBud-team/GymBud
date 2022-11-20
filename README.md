@@ -32,3 +32,20 @@ O ***__GymBud__*** é uma plataforma que busca ajudar pessoas da comunidade ***F
 
 Link do Diagrama de Classes: https://lucid.app/lucidchart/d0280daf-2fa3-41c8-9005-35793c56706e/edit?page=0_0#
 
+### Como configurar o ambiente para contribuir
+
+Para ter acesso ao repositório localmente e configurar o ambiente de django de maneira correta é necessário executar os comandos a seguir no terminal do seu computador dentro da pasta que deseja armazenar o projeto.<br><br>
+(é preciso ter python e pip previamente instalados na máquina, acesse https://www.python.org/downloads/)
+- git clone https://github.com/GymBud-team/GymBud.git
+- pip install virtualenv
+- virtualenv env
+- env\scripts\activate
+- pip install django
+- python manage.py makemigrations
+- python manage.py migrate<br><br>
+(OBS: podem haver pequenas variações desses comandos para Linux e Mac).
+
+Pronto! Dessa maneira você terá acesso ao código dessa aplicação e pode fazer as alterações que quiser.<br>
+Para ver a aplicação rodando localmente, utilize o comando a seguir:
+- python manage.py runserver
+

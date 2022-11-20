@@ -1,6 +1,7 @@
 {%extends 'gb/base.html'%} {%block title%}
 <p><a href="{%url 'gb:confirmed'  %}">GymBud</a> Feed de Posts</p>
 {%endblock%} {%block content%}
+<p>*As imagens somem a cada 5h devido ao banco de dados gratuito do Heroku</p>
 <div style="margin-left: 10px">
   <h4><a href="{% url 'gb:create_post'  %}">Criar postagem</a></h4>
   <hr />

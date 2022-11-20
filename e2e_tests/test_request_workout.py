@@ -36,7 +36,7 @@ class TestRequestWorkoutPage(StaticLiveServerTestCase):
         horas = self.browser.find_element(By.XPATH, '/html/body/form/p[2]/textarea').send_keys(1)
         submit = self.browser.find_element(By.XPATH, '/html/body/form/input[2]').send_keys(Keys.RETURN)
 
-        add_url = 'https://app-gymbud.herokuapp.com/requestworkout/'
+        add_url = 'http://localhost:8000/requestworkout/'
         self.assertEquals(self.browser.current_url, add_url)
     
     def solicitar_treino_duas_vezes(self):

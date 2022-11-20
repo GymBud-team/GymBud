@@ -10,14 +10,14 @@ from django.urls import reverse
 
 # Landing Page
 def index(request):
-    """ carac_last = Caracteristicas.objects.latest('usuario_id')
+    carac_last = Caracteristicas.objects.latest('usuario_id')
     metas_last = Metas.objects.latest('id')
 
     if request.user.is_authenticated and carac_last.usuario_id < request.user.id:
         return redirect('gb:caracteristicas')
     elif request.user.is_authenticated and metas_last.usuario_id < request.user.id:
-        return redirect('gb:define_metas') """
-    if request.user.is_authenticated:
+        return redirect('gb:define_metas')
+    elif request.user.is_authenticated:
         return redirect('gb:confirmed')
     
     if(request.method == 'POST'):
@@ -66,9 +66,9 @@ def register(request):
     return render(request, 'gb/register.html', context)
 
 def define_caracteristicas(request):
-    """ carac_last = Caracteristicas.objects.latest('usuario_id')
+    carac_last = Caracteristicas.objects.latest('usuario_id')
     if request.user.is_authenticated and carac_last.usuario_id == request.user.id:
-        return redirect('gb:define_metas') """
+        return redirect('gb:define_metas')
 
     instance = Caracteristicas()
     

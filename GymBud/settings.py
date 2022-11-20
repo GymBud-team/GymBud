@@ -82,15 +82,15 @@ WSGI_APPLICATION = 'GymBud.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+} """
 
 
-""" DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': "dfef9m53o0j7ko",
@@ -99,7 +99,7 @@ DATABASES = {
         'HOST': "ec2-3-232-16-233.compute-1.amazonaws.com",
         'PORT': "5432",  # 5432 by default
     }
-} """
+}
 
 
 # Password validation

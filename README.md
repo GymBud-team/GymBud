@@ -46,6 +46,7 @@ Para ter acesso ao repositório localmente e configurar o ambiente de django de 
 - pip install django
 - python manage.py makemigrations
 - python manage.py migrate<br><br>
+- instalar as dependências especificadas no arquivo "requirements.txt"
 (OBS: podem haver pequenas variações desses comandos para Linux e Mac).
 
 Pronto! Dessa maneira você terá acesso ao código dessa aplicação e pode fazer as alterações que quiser.<br>

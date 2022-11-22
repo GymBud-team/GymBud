@@ -17,6 +17,8 @@ O ***__GymBud__*** é uma plataforma que busca ajudar pessoas da comunidade ***F
 <div style="display: inline_block"><br>
   <img align="center" alt="gymbud-Python" height="40" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
   <img align="center" alt="gymbud-Django" height="40" width="50" src="https://icongr.am/devicon/django-original.svg?size=128&color=currentColor">
+  <img align="center" alt="gymbud-HTML" height="40" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="gymbud-CSS" height="40" width="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
 
 
 
@@ -26,6 +28,7 @@ O ***__GymBud__*** é uma plataforma que busca ajudar pessoas da comunidade ***F
   <a href="https://www.figma.com/file/9cpLvcqoB6CJjRUXmC9CrT/Lo-Fi-GymBud?node-id=0%3A1" target="_blank"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" target="_blank"></a>
   <a href="https://app-gymbud.herokuapp.com/" target="_blank"><img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" target="_blank"></a>
  <a href="https://gymbud.atlassian.net/jira/software/projects/GYMBUD/boards/1" target="_blank"><img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white" target="_blank"></a> 
+   <a href="https://youtu.be/KQQhvMBtX5k" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" target="_blank"></a>
  
  
 </div>

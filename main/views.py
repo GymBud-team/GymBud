@@ -177,7 +177,6 @@ def peso(request):
 
 def water_count(request):
     form = IngestaoAguaForm()
-    keep = 0
     instance = IngestaoAgua.objects.filter(usuario_id = request.user.id)
 
     for i in instance:
@@ -190,11 +189,8 @@ def water_count(request):
         metas = i
     
     bateu_meta = False
-    if(instance_last_date.get_day > instance.get_day):
-        consumo = 0
-    else:
-        keep = instance.agua
-        consumo = keep
+    keep = instance.agua
+    consumo = keep
 
     dia = instance.get_day
     mes = instance.get_month
@@ -236,12 +232,8 @@ def calorie_count(request):
     for i in metas:
         metas = i
 
-    bateu_meta = False
-    if(instance_last_date.get_day > instance.get_day):
-        consumo = 0
-    else:
-        keep = instance.calorias
-        consumo = keep
+    keep = instance.calorias
+    consumo = keep
 
     dia = instance.get_day
     mes = instance.get_month

@@ -7,6 +7,7 @@ from django.contrib import messages
 from .forms import *
 from datetime import date, timedelta
 from django.urls import reverse
+from django.utils import timezone
 
 # Landing Page
 def index(request):
@@ -192,8 +193,8 @@ def water_count(request):
     keep = instance.agua
     consumo = keep
 
-    dia = instance.get_day
-    mes = instance.get_month
+    dia = timezone.now().day
+    mes = timezone.now().month
     
     um_dig = False
 
@@ -222,7 +223,7 @@ def water_count(request):
 def calorie_count(request):
     form = IngestaoCaloriasForm()
     instance = IngestaoCalorias.objects.filter(usuario_id = request.user.id)
-    keep = 0
+
     for i in instance:
         instance = i
 
@@ -232,11 +233,12 @@ def calorie_count(request):
     for i in metas:
         metas = i
 
+    bateu_meta = False
     keep = instance.calorias
     consumo = keep
 
-    dia = instance.get_day
-    mes = instance.get_month
+    dia = timezone.now().day
+    mes = timezone.now().month
     
     um_dig = False
 

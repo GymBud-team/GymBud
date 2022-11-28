@@ -177,7 +177,7 @@ def peso(request):
 
 def water_count(request):
     form = IngestaoAguaForm()
-
+    keep = 0
     instance = IngestaoAgua.objects.filter(usuario_id = request.user.id)
 
     for i in instance:
@@ -226,7 +226,7 @@ def water_count(request):
 def calorie_count(request):
     form = IngestaoCaloriasForm()
     instance = IngestaoCalorias.objects.filter(usuario_id = request.user.id)
-
+    keep = 0
     for i in instance:
         instance = i
 
